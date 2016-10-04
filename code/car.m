@@ -95,11 +95,11 @@ Y_E_zpad = (1/N_zpad)*sum(abs(Y_zpad).^2)
 Y_E_win = (1/N)*sum(abs(Y_win).^2)
 
 
-saveas(figure(1), [figureTitle, '_figure1'], 'pdf');
-saveas(figure(2), [figureTitle, '_figure2'], 'pdf');
-saveas(figure(3), [figureTitle, '_figure3'], 'pdf');
-saveas(figure(4), [figureTitle, '_figure4'], 'pdf');
-saveas(figure(5), [figureTitle, '_figure5'], 'pdf');
+saveas(figure(1), [figureTitle, '_figure1'], 'png');
+saveas(figure(2), [figureTitle, '_figure2'], 'png');
+saveas(figure(3), [figureTitle, '_figure3'], 'png');
+saveas(figure(4), [figureTitle, '_figure4'], 'png');
+saveas(figure(5), [figureTitle, '_figure5'], 'png');
 
 
 
