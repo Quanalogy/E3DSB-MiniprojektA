@@ -1,7 +1,9 @@
+clear all
 close all
 figureTitle = 'Windmill';
 % load file
-[y,Fs] = audioread('./Vindmoller.mp3');
+[y,Fs] = audioread('./windmill.wav');
+y = y(:,1);
 % use DFT (fft)
 Y = fft(y);
 
