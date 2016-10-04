@@ -1,4 +1,5 @@
 close all
+figureTitle = 'Car';
 % load file
 [y,Fs] = audioread('./car.wav');
 % use DFT (fft)
@@ -11,7 +12,11 @@ sample_times = [0:1/Fs:duration-1/Fs];
 figure(1);
 % Plot in time of sound file
 plot(sample_times,y,'b');
-
+hold on
+title([figureTitle, ' sound, in time domain']);
+xlabel('Time[s]');
+ylabel('Magnitude');
+hold off
 
 frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
 
@@ -21,6 +26,9 @@ figure(2);
 semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
 hold on
 grid on
+title([figureTitle, ' sound, in frequency domain(FFT)']);
+xlabel('Frequency [Hz]');
+ylabel('Magnitude [dB]');
 
 [YMax, NMax] = max(YdB(1:N/2));
 FMax = frequency_samples(NMax);
@@ -32,7 +40,11 @@ YSmooth = smooth(YdB);
 figure(3);
 semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
 hold on
+title([figureTitle, ' sound, in frequency domain, pure FFT vs Smooth']);
+xlabel('Frequency [Hz]');
+ylabel('Magnitude [dB]');
 semilogx(frequency_samples(1:N/2), YSmooth(1:N/2), 'b');
+legend([figureTitle,' sound FFt'],[figureTitle,' sound FFt and Smooth'], 'Location', 'southwest');
 grid on
 hold off
 
@@ -48,7 +60,11 @@ YdB_zpad = 20*log10(abs(Y_zpad));
 figure(4);
 semilogx(f_zpad_samples(1:N_zpad/2), YdB_zpad(1:N_zpad/2), 'b');
 hold on
+title([figureTitle, ' sound, in frequency domain, pure FFT vs Zeropad']);
+xlabel('Frequency [Hz]');
+ylabel('Magnitude [dB]');
 semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
+legend([figureTitle,' sound FFt'],[figureTitle,' sound FFt and Zeropad'], 'Location', 'southwest');
 grid on
 hold off
 
@@ -62,7 +78,11 @@ YdB_win = 20*log10(abs(Y_win));
 figure(5);
 semilogx(frequency_samples(1:N/2),YdB_win(1:N/2), 'b'); 
 hold on
+title([figureTitle, ' sound, in frequency domain, pure FFT vs Hamming windowing']);
+xlabel('Frequency [Hz]');
+ylabel('Magnitude [dB]');
 semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
+legend([figureTitle,' sound FFt'],[figureTitle,' sound FFt and Hamming windowing'], 'Location', 'southwest');
 grid on
 hold off
 
@@ -75,6 +95,7 @@ Y_E_zpad = (1/N_zpad)*sum(abs(Y_zpad).^2)
 Y_E_win = (1/N)*sum(abs(Y_win).^2)
 
 
+saveas(figure(1), [figureTitle, '_figure1'], 'pdf');
 
 
 
