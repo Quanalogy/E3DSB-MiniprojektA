@@ -4,6 +4,7 @@ figureTitle = 'Windmill';
 % load file
 [y,Fs] = audioread('./windmill.wav');
 y = y(:,1);
+%y = y(0.1*end:0.9*end,1);   % Only load one channel from 10 % - 90 %
 % use DFT (fft)
 Y = fft(y);
 
