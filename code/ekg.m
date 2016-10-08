@@ -1,10 +1,11 @@
 clear all
 close all
-figureTitle = 'ekg';
+figureTitle = 'heartmonitor-ekg';
 % load file
- load('./ecgdemodata1.mat')
-Fs = samplingrate
-y = ecg;
+[y,Fs] = audioread('./heartmonitor-ekg.wav');
+y = y(:,1);
+
+
  %[y,Fs] = audioread('./[Official Video] Cheerleader – Pentatonix (OMI Cover).mp3');
 y = y(:,1);
 %y = y(0.1*end:0.9*end,1);   % Only load one channel from 10 % - 90 %
@@ -12,8 +13,7 @@ y = y(:,1);
 Y = fft(y);
 
 % show on figure (abs) - uptill nyquist
-N = 44604
-length(Y);
+N = length(Y);
 duration = (1/Fs)*N;
 sample_times = [0:1/Fs:duration-1/Fs];
 figure(1);
@@ -56,7 +56,7 @@ grid on
 hold off
 
 % Zero padding
-y_zpad = cat(1, y, zeros(1, N));
+y_zpad = cat(1, y, zeros(N,1));
 Y_zpad = fft(y_zpad);
 
 [N_zpad, fu] = size(Y_zpad);
