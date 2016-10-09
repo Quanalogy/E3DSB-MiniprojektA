@@ -1,6 +1,6 @@
 clear all
 close all
-figureTitle = 'heartmonitor-ekg';
+figureTitle = 'EKG';
 % load file
 [y,Fs] = audioread('./heartmonitor-ekg.wav');
 y = y(:,1);
@@ -107,6 +107,3 @@ saveas(figure(2), [figureTitle, '_figure2'], 'png');
 saveas(figure(3), [figureTitle, '_figure3'], 'png');
 saveas(figure(4), [figureTitle, '_figure4'], 'png');
 saveas(figure(5), [figureTitle, '_figure5'], 'png');
-
-
-
