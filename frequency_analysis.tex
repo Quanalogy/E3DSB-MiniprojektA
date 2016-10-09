@@ -170,9 +170,10 @@ Vivaldi - La Follia
 For the car sound we see a peak in what appears to be \SI{300}{\hertz}, while the windmill is \SI{90}{\hertz}, the EKG in about \SI{5000}{\hertz}, the glass in about \SI{1000}{\hertz}. 
 
 For the songs the popsong has a peak in about \SI{90}{\hertz}, the Techno \SI{90}{\hertz}, the heavy metal \SI{90}{\hertz} and the classical in about \SI{1000}{\hertz}
+
 \section{Energy} 
 \Cref{tab:Energy} shows the energies in signals before and after the Fourier transform. It clearly shows that there is no loss of energy between the original signal and a Fourier transform, but when smoothing and windowing is applied there is a potential loss of energy.
-While zero padding does not add or remove any energy from the signal.
+Zero padding does not add or remove any energy from the signal, as it is equivalent of adding \SI{0}{\volt}DC to the signal.
 \begin{table}[htb!]
 	\centering
 	\begin{tabularx}{\textwidth}{p{2cm} | X X X X X}
@@ -194,9 +195,6 @@ While zero padding does not add or remove any energy from the signal.
 		
 		Classical & \num{12,9}	& \num{12,9}	& \num{1,09}	& \num{12,9}	& \num{3,86} \\
 	\end{tabularx}
-	
 	\caption{Energy of the different signals shown in \si{\joule}.}
 	\label{tab:Energy}
 \end{table}
-
-Eksperimenter med udglatning, zero-padding og windowing 

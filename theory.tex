@@ -44,7 +44,7 @@ X_{\SI{}{\decibel}}(m) = 10\log_{10}(|X(m)|^2)\SI{}{\decibel} = 20\log_{10}(|X(m
 
 \subsection{Smoothing}
 
-When using Matlab, the "smooth" function take a column vector and smoothen the data by making avarages of a defined span, which by default is 5 datapoints\cite[smooth]{MATLAB_DOC}. 
+When using Matlab, the "smooth" function takes a column vector and smoothesn the data by making averages of a defined span, which by default is 5 datapoints \cite[smooth]{MATLAB_DOC}. 
 For this project the default value has been used, hence the prototype for the function is:
 
 \begin{minted}{matlab}
@@ -52,37 +52,33 @@ For this project the default value has been used, hence the prototype for the fu
 \end{minted}
 If another span value is needed the prototype for smooth is:
 
-
 \begin{minted}{matlab}
 	Y_smooth = smooth(Y, span_value)
 \end{minted}
 
-The smooth function is great for getting an better overview of data with many different values, becuase of the avarages it makes. 
-Take the car sound as an example on figure \ref{fig:Car_figure5:2}, here the red is the fourier transformed function, while the blue is the smoothened function of the red one. 
-It is apparent that the blue signal haven't got the crazy magnitude of the red, but resemples the same data - we can still see the general nature of the signal, it is just represented in a more human readable way.
+The smooth function is great for getting a better overview of data with many different values, becuase of the averages it makes. 
 
-\subsection{Zero padding}
-
+\subsection{Zero Padding}
 Zero padding is a way of getting more frequency bins hence getting a better visual representation of the signal. 
-To do Zeropadding, a series of 0'es is appended to the end of the signal, afterwards the discrete fourier transform is performed. 
-Example code of zeropadding the signal from a car motor in Matlab is seen below:
+To do zero padding, a series of 0's are appended to the end of the signal, afterwards the discrete fourier transform is performed. 
+Example code of zero padding the signal from a car motor in Matlab is seen below:
 
 \begin{minted}{matlab}
-	[y,Fs] = audioread('./car.wav');
-	y_zpad = cat(1, y, zeros(N, 1));
-	Y_zpad = fft(y_zpad);
+	[y,Fs] = audioread('./car.wav'); % load the data
+	y_zpad = cat(1, y, zeros(N, 1)); % append zeros
+	Y_zpad = fft(y_zpad); % Do fft
 \end{minted}
 
 \subsection{Windowing}
 \label{sec:windowing}
-Window functions are made for reducing leakage, which can be induced during DFT. If we have an input sequence of $x(n)$ and a window function $w(n)$, where $N$ is the sum of all samples, $n$ is a given sample, the formula of any window function is
+Window functions are made for reducing leakage, which can be induced during DFT, when peforming fft on signals, which does not have a clear start and end. If we have an input sequence of $x(n)$ and a window function $w(n)$, where $N$ is the sum of all samples, $n$ is a given sample, the formula of any window function is
 
 \begin{equation}
 \label{eq:window}
 X_w(m) = \sum_{n=0}^{N-1} w(n)\cdot x(n)e^{\frac{-j2\pi nm}{N}}
 \end{equation}
 
-In section \ref{sec:analysis} the Hamming window is used, which have the following formula
+In \cref{sec:analysis} the Hamming window is used, which has the following formula
 
 \begin{equation}
 \label{eq:hamming}
@@ -90,5 +86,9 @@ w(n) = 0.54-0.46\cos\left(\frac{2\pi n}{N}\right)
 \end{equation}
 
 \subsection{Energy}
+Later on when the different functions just described in this section is applyied, the energy of a signal is not always the same before and after. When doing the Fourier transform, the Parceval's theorem (\cref{eq:pars}) ensures that the energy before and after are the same, when applying smooth this is not the case.
 
-Later on when the different functions just described in this section is applyied, the energy of a signal is not always the same before and after. When doing the Fourier transform, the Parceval's theorm ensures that the energy before and after are the same, while when applying smooth, this is not the case. 
+\begin{equation}
+	\sum_{n=0}^{N-1}\left|x\left[n\right]\right|^2=\frac{1}{N}\sum_{k=0}^{N-1}\left|X\left[k\right]\right|^2
+	\label{eq:pars}
+\end{equation}
