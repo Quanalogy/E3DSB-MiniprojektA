@@ -1,7 +1,7 @@
 \section{Frequency analysis}
 \label{sec:analysis}
 
-In this following section an analysis will be made of the sound made by a car motor (figure \ref{fig:car}), windmill (figure \ref{fig:windmill}), EKG, breaking wine glass and four different genres of music. 
+In this following section an analysis will be made of the sound made by a car motor (figure \ref{fig:car}), windmill (figure \ref{fig:windmill}), EKG (figure \ref{fig:ekg}), breaking wine glass (figure \ref{fig:glassBreaking}) and four different genres of music. 
 The approach of this analysis will be to plot the signal in the time domain, the fourier transformed signal and then som applied functions described in section \ref{sec:theory}.
 
 
@@ -23,6 +23,7 @@ The original signal from the car engine is seen in figure \ref{fig:car_time}, wh
 	{\includegraphics[width=0.45\linewidth]{code/Car_figure5.png}}
 	\caption{Analysis of the sound of a car.}\label{fig:car}
 \end{figure}
+\clearpage
 
 \subsection{Noise from a Windmill}
 
@@ -49,7 +50,7 @@ The original signal from the windmill is seen plotted in the timedomain in figur
 The original signal from the EKG is seen plotted in the timedomain in figure \ref{fig:ekg_time}, while the fourier transformed signal is seen in figure \ref{fig:ekg_freq}. The following has first applied some function and then is fourier transformed, the smooth function is seen on figure \ref{fig:ekg_smooth}, the zeropadding is seen in figure \ref{fig:ekg_zero} and the window function is seen in figure \ref{fig:ekg_window}.
 
 
-\begin{figure}[htb]
+\begin{figure}[htb!]
 	\centering
 	\subcaptionbox{Time Domain.\label{fig:ekg_time}}
 	{\includegraphics[width=0.45\linewidth]{code/ekg_figure1.png}}
@@ -66,7 +67,9 @@ The original signal from the EKG is seen plotted in the timedomain in figure \re
 
 \subsection{Breaking Wine Glass}
 
-\begin{figure}[htb]
+The original signal from the breaking glass is seen plotted in the timedomain in figure \ref{fig:glassBreaking_time}, while the fourier transformed signal is seen in figure \ref{fig:glassBreaking_freq}. The following has first applied some function and then is fourier transformed, the smooth function is seen on figure \ref{fig:glassBreaking_smooth}, the zeropadding is seen in figure \ref{fig:glassBreaking_zero} and the window function is seen in figure \ref{fig:glassBreaking_window}.
+
+\begin{figure}[htb!]
 	\centering
 	\subcaptionbox{Time Domain.\label{fig:glassBreaking_time}}
 	{\includegraphics[width=0.45\linewidth]{code/glassBreaking_figure1.png}}
@@ -87,7 +90,10 @@ The original signal from the EKG is seen plotted in the timedomain in figure \re
 \paragraph{Pop}
 Michael Jackson - Thriller
 
-\begin{figure}[htb]
+The original signal from the song "Thriller" is seen plotted in the timedomain in figure \ref{fig:pop_time}, while the fourier transformed signal is seen in figure \ref{fig:pop_freq}. The following has first applied some function and then is fourier transformed, the smooth function is seen on figure \ref{fig:pop_smooth}, the zeropadding is seen in figure \ref{fig:pop_zero} and the window function is seen in figure \ref{fig:pop_window}.
+
+
+\begin{figure}[htb!]
 	\centering
 	\subcaptionbox{Time Domain.\label{fig:pop_time}}
 	{\includegraphics[width=0.45\linewidth]{code/Pop_figure1.png}}
@@ -105,7 +111,10 @@ Michael Jackson - Thriller
 \paragraph{Tekno}
 Matador - The Enemy ft Felix Da Housecat (Original Mix)
 
-\begin{figure}[htb]
+
+The original signal from the song "The Enemy" is seen plotted in the timedomain in figure \ref{fig:techno_time}, while the fourier transformed signal is seen in figure \ref{fig:techno_freq}. The following has first applied some function and then is fourier transformed, the smooth function is seen on figure \ref{fig:techno_smooth}, the zeropadding is seen in figure \ref{fig:techno_zero} and the window function is seen in figure \ref{fig:techno_window}.
+
+\begin{figure}[htb!]
 	\centering
 	\subcaptionbox{Time Domain.\label{fig:techno_time}}
 	{\includegraphics[width=0.45\linewidth]{code/Techno_figure1.png}}
