@@ -24,8 +24,8 @@
 \usepackage[backend=biber,style=alphabetic,hyperref]{biblatex} % Needed for bibliography
 \usepackage{graphicx}
 \usepackage{tabularx}
-
-
+\usepackage{longtable}
+\usepackage{tabu}
 
 \bibliography{references} % Needed for bibliography
 \graphicspath{{graphics/}}
@@ -44,6 +44,8 @@
 \tableofcontents
 
 \input{theory.tex}
+\newpage
+\input{matlab_functions.tex}
 \newpage
 \input{contents.tex}
 
