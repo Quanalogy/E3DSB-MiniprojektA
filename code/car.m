@@ -43,7 +43,7 @@ figure(3);
 %semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
 semilogx(frequency_samples(1:N/2), YSmooth(1:N/2), 'r');
 hold on
-title([figureTitle, ' sound, in frequency domain, pure FFT vs Smooth']);
+title([figureTitle, ' sound, in frequency domain, Smooth']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
 xlim([10^-2 Fs/2+10000])
@@ -63,7 +63,7 @@ YdB_zpad = 20*log10(abs(Y_zpad));
 figure(4);
 semilogx(f_zpad_samples(1:N_zpad/2), YdB_zpad(1:N_zpad/2), 'r');
 hold on
-title([figureTitle, ' sound, in frequency domain, pure FFT vs Zeropad']);
+title([figureTitle, ' sound, in frequency domain, Zeropad']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
 xlim([10^-2 Fs/2+10000])
@@ -83,7 +83,7 @@ figure(5);
 semilogx(frequency_samples(1:N/2),YdB_win(1:N/2), 'r');
 %semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
 hold on
-title([figureTitle, ' sound, in frequency domain, FFT vs Hamming windowing']);
+title([figureTitle, ' sound, in frequency domain, Hamming windowing']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
 xlim([10^-2 Fs/2+10000])

@@ -4,11 +4,7 @@ figureTitle = 'heartmonitor-ekg';
 % load file
 [y,Fs] = audioread('./heartmonitor-ekg.wav');
 y = y(:,1);
-
-
- %[y,Fs] = audioread('./[Official Video] Cheerleader – Pentatonix (OMI Cover).mp3');
-y = y(:,1);
-%y = y(0.1*end:0.9*end,1);   % Only load one channel from 10 % - 90 %
+y = y(1:0.6*end,1);   % Only load one channel from 10 % - 90 %
 % use DFT (fft)
 Y = fft(y);
 
@@ -45,13 +41,15 @@ YSmooth = smooth(YdB);
 
 % Mix of smooth and discrete fourier transform
 figure(3);
-semilogx(frequency_samples(N/2:1), YdB(N/2:1), 'r');
+semilogx(frequency_samples(N/2:1), YSmooth(N/2:1), 'r');
+%semilogx(frequency_samples(N/2:1), YdB(N/2:1), 'r');
 hold on
-title([figureTitle, ' sound, in frequency domain, pure FFT vs Smooth']);
+title([figureTitle, ' sound, in frequency domain, Smooth']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
-semilogx(frequency_samples(N/2:1), YSmooth(N/2:1), 'b');
-legend([figureTitle,' sound FFt'],[figureTitle,' sound FFt and Smooth'], 'Location', 'southwest');
+xlim([10^-2 Fs/2+10000]);
+
+%legend([figureTitle,' sound FFt'],[figureTitle,' sound FFt and Smooth'], 'Location', 'southwest');
 grid on
 hold off
 
@@ -65,13 +63,14 @@ f_zpad_samples = [0:Fs/N_zpad: (Fs-(Fs/N_zpad))];
 YdB_zpad = 20*log10(abs(Y_zpad));
 
 figure(4);
-semilogx(f_zpad_samples(1:N_zpad/2), YdB_zpad(1:N_zpad/2), 'b');
+semilogx(f_zpad_samples(1:N_zpad/2), YdB_zpad(1:N_zpad/2), 'r');
 hold on
-title([figureTitle, ' sound, in frequency domain, pure FFT vs Zeropad']);
+title([figureTitle, ' sound, in frequency domain,  Zeropad']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
-semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
-legend([figureTitle,' sound FFt and Zeropad'],[figureTitle,' sound FFt'], 'Location', 'southwest');
+xlim([10^-2 Fs/2+10000]);
+%semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
+%legend([figureTitle,' sound FFt and Zeropad'],[figureTitle,' sound FFt'], 'Location', 'southwest');
 grid on
 hold off
 
@@ -83,13 +82,14 @@ Y_win = fft(y_win);
 YdB_win = 20*log10(abs(Y_win));
 
 figure(5);
-semilogx(frequency_samples(1:N/2),YdB_win(1:N/2), 'b');
+semilogx(frequency_samples(1:N/2),YdB_win(1:N/2), 'r');
 hold on
-title([figureTitle, ' sound, in frequency domain, FFT vs Hamming windowing']);
+title([figureTitle, ' sound, in frequency domain, Hamming windowing']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
-semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
-legend([figureTitle,' sound FFt and Hamming windowing'],[figureTitle,' sound FFt'], 'Location', 'southwest');
+xlim([10^-2 Fs/2+10000]);
+%semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
+%legend([figureTitle,' sound FFt and Hamming windowing'],[figureTitle,' sound FFt'], 'Location', 'southwest');
 grid on
 hold off
 
