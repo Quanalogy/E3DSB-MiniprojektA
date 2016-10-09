@@ -48,7 +48,6 @@ For this project the default value has been used, hence the prototype for the fu
 \begin{minted}{matlab}
 	Y_smooth = smooth(Y)
 \end{minted}
-
 If another span value is needed the prototype for smooth is:
 
 
@@ -62,7 +61,15 @@ It is apparent that the blue signal haven't got the crazy magnitude of the red, 
 
 \subsection{Zero padding}
 
-Zero padding is a way of getting 
+Zero padding is a way of getting more frequency bins hence getting a better visual representation of the signal. 
+To do Zeropadding, a series of 0'es is appended to the end of the signal, afterwards the discrete fourier transform is performed. 
+Example code of zeropadding the signal from a car motor in Matlab is seen below:
+
+\begin{minted}{matlab}
+	[y,Fs] = audioread('./car.wav');
+	y_zpad = cat(1, y, zeros(N, 1));
+	Y_zpad = fft(y_zpad);
+\end{minted}
 
 \subsection{Windowing}
 
