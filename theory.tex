@@ -78,12 +78,14 @@ Example code of zeropadding the signal from a car motor in Matlab is seen below:
 Window functions are made for reducing leakage, which can be induced during DFT. If we have an input sequence of $x(n)$ and a window function $w(n)$, where $N$ is the sum of all samples, $n$ is a given sample, the formula of any window function is
 
 \begin{equation}
+\label{eq:window}
 X_w(m) = \sum_{n=0}^{N-1} w(n)\cdot x(n)e^{\frac{-j2\pi nm}{N}}
 \end{equation}
 
-In section \ref{sec:analysisOfSignals} the Hamming window is used, which have the following formula
+In section \ref{sec:analysis} the Hamming window is used, which have the following formula
 
 \begin{equation}
+\label{eq:hamming}
 w(n) = 0.54-0.46\cos\left(\frac{2\pi n}{N}\right)
 \end{equation}
 
