@@ -2,13 +2,18 @@
 
 \subsection{Fourier}
 
-Fourier is a method for getting a signal from the time domain into the frequency domain. For a fourier function a signal go from $x(t) \rightarrow X(f)$. Fourier is defined by:
+Fourier is a method for getting a signal from the time domain into the frequency domain. 
+For a fourier function a signal go from $x(t) \rightarrow X(f)$. Fourier is defined by:
 
 \begin{equation}
 X(f) = \int_{-\infty}^{\infty} x(t)e^{-j2\pi ft}dt
 \end{equation}
 
-where $x(t)$ is some continous signal \cite[p. 53]{DSP}. When a fourier transform is needed in MATLAB, the "fft" function can be used. "fft" stands for "fast fourier transform". The "fft" function computes the discrete fourier transform (DFT) of some signal by using a fast fourier transform algorithm \cite[fft]{MATLAB_DOC}. By default "fft" only take one parameter, which is the signal:
+where $x(t)$ is some continous signal \cite[p. 53]{DSP}. 
+When a fourier transform is needed in MATLAB, the "fft" function can be used. 
+"fft" stands for "fast fourier transform". 
+The "fft" function computes the discrete fourier transform (DFT) of some signal by using a fast fourier transform algorithm \cite[fft]{MATLAB_DOC}. 
+By default "fft" only take one parameter, which is the signal:
 
 \begin{minted}{matlab}
 	Y = fft(y)
@@ -16,7 +21,12 @@ where $x(t)$ is some continous signal \cite[p. 53]{DSP}. When a fourier transfor
 
 \subsection{The dB-scale}
 
-The \SI{}{\decibel} scale is used for plotting signals in the frequency domain and is deducted from the bel scale. The bel scale is defined by the base 10 logarithm of the difference between two powers $\log_{10}\frac{P1}{P2}\SI{}{\bel}$
+The \SI{}{\decibel} scale is used for plotting signals in the frequency domain and is deducted from the bel scale. 
+The bel scale is defined by the base 10 logarithm of the difference between two powers\cite[Appendix E]{DSP}
+
+\[
+\log_{10}\frac{P1}{P2}\SI{}{\bel}
+\] 
 
 The bel scale itself can be very big which led to the unit decibel, that is one tenth of a bel:
 
@@ -32,7 +42,8 @@ X_{\SI{}{\decibel}}(m) = 10\log_{10}(|X(m)|^2)\SI{}{\decibel} = 20\log_{10}(|X(m
 
 \subsection{Smoothing}
 
-When using Matlab, the "smooth" function take a column vector and smoothen the data by making avarages of a defined span, which by default is 5 datapoints\cite[smooth]{MATLAB_DOC}. For this project the default value has been used, hence the prototype for the function is:
+When using Matlab, the "smooth" function take a column vector and smoothen the data by making avarages of a defined span, which by default is 5 datapoints\cite[smooth]{MATLAB_DOC}. 
+For this project the default value has been used, hence the prototype for the function is:
 
 \begin{minted}{matlab}
 	Y_smooth = smooth(Y)
@@ -46,7 +57,8 @@ If another span value is needed the prototype for smooth is:
 \end{minted}
 
 The smooth function is great for getting an better overview of data with many different values, becuase of the avarages it makes. 
-Take the car sound as an example on figure \ref{fig:Car_figure5:2}, here the red is the fourier transformed function, while the blue is the smoothened function of the red one. It is apparent that the blue signal haven't got the crazy magnitude of the red, but resemples the same data - we can still see the general nature of the signal, it is just represented in a more human readable way.
+Take the car sound as an example on figure \ref{fig:Car_figure5:2}, here the red is the fourier transformed function, while the blue is the smoothened function of the red one. 
+It is apparent that the blue signal haven't got the crazy magnitude of the red, but resemples the same data - we can still see the general nature of the signal, it is just represented in a more human readable way.
 
 \subsection{Zero padding}
 
