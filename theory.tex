@@ -2,19 +2,23 @@
 
 \subsection{Fourier}
 
-Fourier:
+Fourier is a method for getting a signal from the time domain into the frequency domain. For a fourier function a signal go from $x(t) \rightarrow X(f)$. Fourier is defined by:
 
 \begin{equation}
 X(f) = \int_{-\infty}^{\infty} x(t)e^{-j2\pi ft}dt
 \end{equation}
 
-where $x(t)$ is some continous signal \cite[p. 53]{DSP}. 
+where $x(t)$ is some continous signal \cite[p. 53]{DSP}. When a fourier transform is needed in MATLAB, the "fft" function can be used. "fft" stands for "fast fourier transform". The "fft" function computes the discrete fourier transform (DFT) of some signal by using a fast fourier transform algorithm \cite[fft]{MATLAB_DOC}. By default "fft" only take one parameter, which is the signal:
+
+\begin{minted}{matlab}
+	Y = fft(y)
+\end{minted}
 
 \subsection{The dB-scale}
 
 \subsection{Smoothing}
 
-When using Matlab, the "smooth" function take a column vector and smoothen the data by making avarages of a defined span, which by default is 5 datapoints. For this project the default value has been used, hence the prototype for the function is:
+When using Matlab, the "smooth" function take a column vector and smoothen the data by making avarages of a defined span, which by default is 5 datapoints\cite[smooth]{MATLAB_DOC}. For this project the default value has been used, hence the prototype for the function is:
 
 \begin{minted}{matlab}
 	Y_smooth = smooth(Y)
