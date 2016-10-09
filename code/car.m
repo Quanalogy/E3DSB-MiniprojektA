@@ -45,6 +45,7 @@ hold on
 title([figureTitle, ' sound, in frequency domain, pure FFT vs Smooth']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
+xlim([10^-2 Fs/2+10000])
 semilogx(frequency_samples(1:N/2), YSmooth(1:N/2), 'b');
 legend([figureTitle,' sound FFt'],[figureTitle,' sound FFt and Smooth'], 'Location', 'southwest');
 grid on
@@ -65,6 +66,7 @@ hold on
 title([figureTitle, ' sound, in frequency domain, pure FFT vs Zeropad']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
+xlim([10^-2 Fs/2+10000])
 semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
 legend([figureTitle,' sound FFt and Zeropad'],[figureTitle,' sound FFt'], 'Location', 'southwest');
 grid on
@@ -83,6 +85,7 @@ hold on
 title([figureTitle, ' sound, in frequency domain, FFT vs Hamming windowing']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
+xlim([10^-2 Fs/2+10000])
 semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
 legend([figureTitle,' sound FFt and Hamming windowing'],[figureTitle,' sound FFt'], 'Location', 'southwest');
 grid on
