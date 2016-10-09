@@ -10,9 +10,12 @@
 \usepackage[T1]{fontenc}
 \usepackage{siunitx}				% Enheder i math mode
 \usepackage[hidelinks]{hyperref} % clickable refs
+\usepackage[backend=biber,style=alphabetic,hyperref]{biblatex} % Needed for bibliography
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{minted}
+
+\bibliography{references} % Needed for bibliography
 \graphicspath{{graphics/}}
 
 
@@ -31,7 +34,7 @@
 \newpage
 \input{contents.tex}
 
-
+\printbibliography
 \input{appendix.tex}
 
 
