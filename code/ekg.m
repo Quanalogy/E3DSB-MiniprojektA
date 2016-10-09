@@ -26,12 +26,13 @@ frequency_samples = [0:Fs/N:Fs-(Fs/N)];
 YdB = 20*log10(abs(Y));
 % Plot of discrete fourier transform
 figure(2);
-semilogx(frequency_samples((N/2):1), YdB((N/2):1), 'r');
+semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
 hold on
 grid on
 title([figureTitle, ' sound, in frequency domain(FFT)']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
+xlim([10^-2 Fs/2+10000]);
 
 [YMax, NMax] = max(YdB(N/2:1));
 FMax = frequency_samples(NMax);
@@ -41,7 +42,7 @@ YSmooth = smooth(YdB);
 
 % Mix of smooth and discrete fourier transform
 figure(3);
-semilogx(frequency_samples(N/2:1), YSmooth(N/2:1), 'r');
+semilogx(frequency_samples(1:N/2), YSmooth(1:N/2), 'r');
 %semilogx(frequency_samples(N/2:1), YdB(N/2:1), 'r');
 hold on
 title([figureTitle, ' sound, in frequency domain, Smooth']);

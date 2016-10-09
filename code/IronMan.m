@@ -1,5 +1,5 @@
 close all
-figureTitle = 'Heavy_Metal';
+figureTitle = 'HeavyMetal';
 % load file
 [y,Fs] = audioread('Black Sabbath Iron Man.mp3');
 y = y(:,1);
