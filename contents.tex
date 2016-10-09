@@ -75,47 +75,47 @@ Korrekte frekvensbins?
 Eksperimenter med udglatning, zero-padding og windowing 
 
 \section{Energy} 
-table \ref{tab:Energy} shows the energies in signals before and after the fourier transform. And it clearly shows that there is no loss of energy and a Fourier transform.
-but when smoothing and windowing is applied there is a potential loss of energy. While zero pad doesn't add or remove any energy from the signal
+\Cref{tab:Energy} shows the energies in signals before and after the Fourier transform. It clearly shows that there is no loss of energy between the original signal and a Fourier transform, but when smoothing and windowing is applied there is a potential loss of energy.
+While zero padding does not add or remove any energy from the signal.
 \begin{table}[]
-\centering
-\begin{tabularx}{\textwidth}{Xllll}
-windmill                      &                  &           &           &           \\
-time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
-4,141E+04                     & 4,141E+04        & 7,100E+02 & 4,141E+04 & 1,793E+04 \\
-                              &                  &           &           &           \\
-car sound                     &                  &           &           &           \\
-time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
-3,07E+04                      & 3,07E+04         & 6,86E+02  & 3,07E+04  & 1,34E+04  \\
-                              &                  &           &           &           \\
-                              &                  &           &           &           \\
-Cheerleader                   &                  &           &           &           \\
-time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
-1,34E+05                      & 1,34E+05         & 1,29E+03  & 1,34E+05  & 7,39E+04  \\
-                              &                  &           &           &           \\
-Roundtable Rival              &                  &           &           &           \\
-time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
-2,98E+05                      & 2,98E+05         & 1,70E+03  & 2,98E+05  & 1,28E+05  \\
-                              &                  &           &           &           \\
-Michael Jackson - Billie Jean &                  &           &           &           \\
-time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
-1,627E+05                     & 1,627E+05        & 1,727E+03 & 1,627E+05 & 6,862E+04 \\
-                              &                  &           &           &           \\
-Let-It-Go Violin              &                  &           &           &           \\
-time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
-2,24E+04                      & 2,24E+04         & 896,4634  & 2,24E+04  & 1,09E+04  \\
-                              &                  &           &           &           \\
-crystalglass                  &                  &           &           &           \\
-time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
-115,23                        & 115,23           & 154,83    & 115,23    & 2,65      \\
-                              &                  &           &           &           \\
-heartmonitor-ekg              &                  &           &           &           \\
-time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
-2,05E+04                      & 2,05E+04         & 626       & 2,05E+04  & 7,29E+03 
-\end{tabularx}
-
-\caption{energy in different signals after, different analysis methods }
-\label{tab:Energy}
+	\centering
+	\begin{tabularx}{\textwidth}{Xllll}
+		windmill                      &                  &           &           &           \\
+		time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
+		4,141E+04                     & 4,141E+04        & 7,100E+02 & 4,141E+04 & 1,793E+04 \\
+		                              &                  &           &           &           \\
+		car sound                     &                  &           &           &           \\
+		time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
+		3,07E+04                      & 3,07E+04         & 6,86E+02  & 3,07E+04  & 1,34E+04  \\
+		                              &                  &           &           &           \\
+		                              &                  &           &           &           \\
+		Cheerleader                   &                  &           &           &           \\
+		time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
+		1,34E+05                      & 1,34E+05         & 1,29E+03  & 1,34E+05  & 7,39E+04  \\
+		                              &                  &           &           &           \\
+		Roundtable Rival              &                  &           &           &           \\
+		time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
+		2,98E+05                      & 2,98E+05         & 1,70E+03  & 2,98E+05  & 1,28E+05  \\
+		                              &                  &           &           &           \\
+		Michael Jackson - Billie Jean &                  &           &           &           \\
+		time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
+		1,627E+05                     & 1,627E+05        & 1,727E+03 & 1,627E+05 & 6,862E+04 \\
+		                              &                  &           &           &           \\
+		Let-It-Go Violin              &                  &           &           &           \\
+		time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
+		2,24E+04                      & 2,24E+04         & 896,4634  & 2,24E+04  & 1,09E+04  \\
+		                              &                  &           &           &           \\
+		crystalglass                  &                  &           &           &           \\
+		time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
+		115,23                        & 115,23           & 154,83    & 115,23    & 2,65      \\
+		                              &                  &           &           &           \\
+		heartmonitor-ekg              &                  &           &           &           \\
+		time domain                   & frequency domain & smoot     & zero pad  & Windowing \\
+		2,05E+04                      & 2,05E+04         & 626       & 2,05E+04  & 7,29E+03 
+	\end{tabularx}
+	
+	\caption{energy in different signals after, different analysis methods }
+	\label{tab:Energy}
 \end{table}
 
 \section{Discussion}

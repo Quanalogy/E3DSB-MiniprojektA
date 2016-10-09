@@ -16,6 +16,7 @@ hold on
 title([figureTitle, ' sound, in time domain']);
 xlabel('Time[s]');
 ylabel('Magnitude');
+xlim([0 35]);
 hold off
 
 frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
@@ -29,6 +30,7 @@ grid on
 title([figureTitle, ' sound, in frequency domain(FFT)']);
 xlabel('Frequency [Hz]');
 ylabel('Magnitude [dB]');
+xlim([10^-2 Fs/2+10000])
 
 [YMax, NMax] = max(YdB(1:N/2));
 FMax = frequency_samples(NMax);
@@ -100,6 +102,3 @@ saveas(figure(2), [figureTitle, '_figure2'], 'png');
 saveas(figure(3), [figureTitle, '_figure3'], 'png');
 saveas(figure(4), [figureTitle, '_figure4'], 'png');
 saveas(figure(5), [figureTitle, '_figure5'], 'png');
-
-
-
