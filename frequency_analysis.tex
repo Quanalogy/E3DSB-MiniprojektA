@@ -1,11 +1,14 @@
 \section{Frequency analysis}
 \label{sec:analysis}
 
-In this following section an analysis will be made of the sound made by a car motor, windmill, EKG, breaking wine glass and four different genres of music. 
+In this following section an analysis will be made of the sound made by a car motor (figure \ref{fig:car}), windmill (figure \ref{fig:windmill}), EKG, breaking wine glass and four different genres of music. 
 The approach of this analysis will be to plot the signal in the time domain, the fourier transformed signal and then som applied functions described in section \ref{sec:theory}.
 
 
 \subsection{Car engine}
+
+The original signal from the car engine is seen in figure \ref{fig:car_time}, while the Fourier transformed signal is seen in figure \ref{fig:car_freq}. The following are also Fourier transformed, but have applied smoothing (figure \ref{fig:car_smooth}), zeropadding (figure \ref{fig:car_zero}) and hamming (figure \ref{fig:car_window}). Notice the magnitude difference from the Fourier transformed to the smoothing.
+
 \begin{figure}[htb]
 	\centering
 	\subcaptionbox{Time Domain.\label{fig:car_time}}
@@ -22,6 +25,9 @@ The approach of this analysis will be to plot the signal in the time domain, the
 \end{figure}
 
 \subsection{Noise from a Windmill}
+
+The original signal from the windmill is seen plotted in the timedomain in figure \ref{fig:windmill_time}, while the fourier transformed signal is seen in figure \ref{fig:windmill_freq}. The following has first applied some function and then is fourier transformed, the smooth function is seen on figure \ref{fig:windmill_smooth}, the zeropadding is seen in figure \ref{fig:windmill_zero} and the window function is seen in figure \ref{fig:windmill_window}.
+
 \begin{figure}[htb]
 	\centering
 	\subcaptionbox{Time Domain.\label{fig:windmill_time}}
