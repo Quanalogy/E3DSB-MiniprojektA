@@ -84,15 +84,45 @@ The original signal from the EKG is seen plotted in the timedomain in figure \re
 
 \subsection{Music}
 
-\paragraph{Genre 1}
-Pentatonix (OMI Cover) - Cheerleader
+\paragraph{Pop}
+Michael Jackson - Thriller
 
-\paragraph{Genre 2}
+\begin{figure}[htb]
+	\centering
+	\subcaptionbox{Time Domain.\label{fig:pop_time}}
+	{\includegraphics[width=0.45\linewidth]{code/Pop_figure1.png}}
+	\subcaptionbox{Frequency Domain.\label{fig:pop_freq}}
+	{\includegraphics[width=0.45\linewidth]{code/Pop_figure2.png}}
+	\subcaptionbox{Smoothed fft.\label{fig:pop_smooth}}
+	{\includegraphics[width=0.45\linewidth]{code/Pop_figure3.png}}
+	\subcaptionbox{fft of zero padded original.\label{fig:pop_zero}}
+	{\includegraphics[width=0.45\linewidth]{code/Pop_figure4.png}}
+	\subcaptionbox{fft of windowed original.\label{fig:pop_window}}
+	{\includegraphics[width=0.45\linewidth]{code/Pop_figure5.png}}
+	\caption{Analysis of the sound of Pop.}\label{fig:pop}
+\end{figure}
 
+\paragraph{Tekno}
+Matador - The Enemy ft Felix Da Housecat (Original Mix)
 
-\paragraph{Genre 3}
+\begin{figure}[htb]
+	\centering
+	\subcaptionbox{Time Domain.\label{fig:techno_time}}
+	{\includegraphics[width=0.45\linewidth]{code/Techno_figure1.png}}
+	\subcaptionbox{Frequency Domain.\label{fig:techno_freq}}
+	{\includegraphics[width=0.45\linewidth]{code/Techno_figure2.png}}
+	\subcaptionbox{Smoothed fft.\label{fig:techno_smooth}}
+	{\includegraphics[width=0.45\linewidth]{code/Techno_figure3.png}}
+	\subcaptionbox{fft of zero padded original.\label{fig:techno_zero}}
+	{\includegraphics[width=0.45\linewidth]{code/Techno_figure4.png}}
+	\subcaptionbox{fft of windowed original.\label{fig:techno_window}}
+	{\includegraphics[width=0.45\linewidth]{code/Techno_figure5.png}}
+	\caption{Analysis of the sound of Techno.}\label{fig:techno}
+\end{figure}
 
-\paragraph{Genre 4}
+\paragraph{Heavy Metal}
+
+\paragraph{Klassisk}
 
 \subsubsection{Conclusion}
 
@@ -113,13 +143,13 @@ While zero padding does not add or remove any energy from the signal.
 		
 		EKG & \num{2,05}	& \num{2,05}	& \num{0,626}	& \num{2,05}	& \num{0,729} \\
 		
-		Cheerleader & \num{13,4}	& \num{13,4}	& \num{1,29}	& \num{13,4}	& \num{7,39}  \\
+		Pop & & & & & \\
 		
-		Roundtable Rival & \num{29,8}	& \num{29,8}	& \num{1,70}	& \num{29,8}	& \num{12,8}  \\
+		Electronica & & & & & \\
 		
-		Micheal Jackson \newline Billie Jean & \num{16,3}	& \num{16,3}	& \num{1,73}	& \num{16,3}	& \num{6,86} \\
+		Heavy Metal & & & & & \\
 		
-		Violin \newline Let It Go & \num{2,24}	& \num{2,24}	& \num{0,896}	& \num{2,24}	& \num{1,09}
+		Klassisk & & & & & \\
 	\end{tabularx}
 	
 	\caption{Energy of the different signals shown in \si{\joule}.}
