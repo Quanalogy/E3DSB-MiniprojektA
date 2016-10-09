@@ -6,64 +6,51 @@ The approach of this analysis will be to plot the signal in the time domain, the
 
 
 \subsection{Car engine}
-
-In figure \ref{fig:Car_time} a plot of the original signal is seen. This has been made using the audioread, length and plot functions described in section \ref{sec:functions}. 
-
-\begin{figure}
-	\includegraphics[width=\textwidth]{code/Car_figure1.png}
-	\caption{Car signal in time domain}
-	\label{fig:Car_time}
-\end{figure}
-
-\subsubsection{DFT}
-The DFT of the car signal 
-
-\begin{figure}
+\begin{figure}[htb]
 	\centering
-	\includegraphics[width=\textwidth]{code/Car_figure2.png}
-	\caption{}
-	\label{fig:Car_DFT}
+	\subcaptionbox{Time Domain.\label{fig:car_time}}
+	{\includegraphics[width=0.45\linewidth]{code/Car_figure1.png}}
+	\subcaptionbox{Frequency Domain.\label{fig:car_freq}}
+	{\includegraphics[width=0.45\linewidth]{code/Car_figure2.png}}
+	\subcaptionbox{The original fft result vs smoothed result.\label{fig:car_smooth}}
+	{\includegraphics[width=0.45\linewidth]{code/Car_figure3.png}}
+	\subcaptionbox{The original fft result vs zero padded original.\label{fig:car_zero}}
+	{\includegraphics[width=0.45\linewidth]{code/Car_figure4.png}}
+	\subcaptionbox{The original fft result vs windowed original.\label{fig:car_window}}
+	{\includegraphics[width=0.45\linewidth]{code/Car_figure5.png}}
+	\caption{Analysis of the sound of a car.}\label{fig:car}
 \end{figure}
 
+\subsection{Noise from a Windmill}
+\begin{figure}[htb]
+	\centering
+	\subcaptionbox{Time Domain.\label{fig:windmill_time}}
+	{\includegraphics[width=0.45\linewidth]{code/Windmill_figure1.png}}
+	\subcaptionbox{Frequency Domain.\label{fig:windmill_freq}}
+	{\includegraphics[width=0.45\linewidth]{code/Windmill_figure2.png}}
+	\subcaptionbox{The original fft result vs smoothed result.\label{fig:windmill_smooth}}
+	{\includegraphics[width=0.45\linewidth]{code/Windmill_figure3.png}}
+	\subcaptionbox{The original fft result vs zero padded original.\label{fig:windmill_zero}}
+	{\includegraphics[width=0.45\linewidth]{code/Windmill_figure4.png}}
+	\subcaptionbox{The original fft result vs windowed original.\label{fig:windmill_window}}
+	{\includegraphics[width=0.45\linewidth]{code/Windmill_figure5.png}}
+	\caption{Analysis of the sound of a windmill.}\label{fig:windmill}
+\end{figure}
 
-
-
-\subsubsection{Analysis}
-
-
-
-
-\subsubsection{Conclusion}
-
-\subsection{Noise from a windmill}
-\subsubsection{DFT}
-
-\subsubsection{Analysis}
-
-\subsubsection{Conclusion}
 
 \subsection{EKG}
-\subsubsection{DFT}
 
-\subsubsection{Analysis}
-
-\subsubsection{Conclusion}
 
 \subsection{Breaking wine glass}
-\subsubsection{DFT}
 
-\subsubsection{Analysis}
-
-\subsubsection{Conclusion}
 
 \subsection{Music}
-\subsubsection{DFT}
-
-\subsubsection{Analysis}
 
 \paragraph{Genre 1}
+Pentatonix (OMI Cover) - Cheerleader
 
 \paragraph{Genre 2}
+
 
 \paragraph{Genre 3}
 
@@ -71,6 +58,34 @@ The DFT of the car signal
 
 \subsubsection{Conclusion}
 
-\section{Further analysis of signals}
-\label{sec:analysisOfSignals}
+
+\section{Energy} 
+\Cref{tab:Energy} shows the energies in signals before and after the Fourier transform. It clearly shows that there is no loss of energy between the original signal and a Fourier transform, but when smoothing and windowing is applied there is a potential loss of energy.
+While zero padding does not add or remove any energy from the signal.
+\begin{table}[htb]
+	\centering
+	\begin{tabularx}{\textwidth}{p{2cm} | X X X X X}
+		& \rotatebox{90}{\textbf{Time Domain $\times\num{e4}$}}   & \rotatebox{90}{\textbf{Frequency Domain $\times\num{e4}$}} & \rotatebox{90}{\textbf{Smooth $\times\num{e3}$}}     & \rotatebox{90}{\textbf{Zero Padding $\times\num{e4}$}}  & \rotatebox{90}{\textbf{Windowing $\times\num{e4}$}} \\
+		\hline
+		Car Engine  & \num{3,07}	& \num{3,07}	& \num{0,686}  &	\num{3,07}  & \num{1,34}  \\
+		
+		Windmill	& \num{4,14}	& \num{4,14}	& \num{0,521} & \num{4,14} & \num{1,79} \\
+		
+		Breaking Wine Glass & \num{0,0115}	& \num{0,0115}	& \num{0,155}	& \num{0,0115}	& \num{0,000265} \\
+		
+		EKG & \num{2,05}	& \num{2,05}	& \num{0,626}	& \num{2,05}	& \num{0,729} \\
+		
+		Cheerleader & \num{13,4}	& \num{13,4}	& \num{1,29}	& \num{13,4}	& \num{7,39}  \\
+		
+		Roundtable Rival & \num{29,8}	& \num{29,8}	& \num{1,70}	& \num{29,8}	& \num{12,8}  \\
+		
+		Micheal Jackson \newline Billie Jean & \num{16,3}	& \num{16,3}	& \num{1,73}	& \num{16,3}	& \num{6,86} \\
+		
+		Violin \newline Let It Go & \num{2,24}	& \num{2,24}	& \num{0,896}	& \num{2,24}	& \num{1,09}
+	\end{tabularx}
+	
+	\caption{Energy of the different signals shown in \si{\joule}.}
+	\label{tab:Energy}
+\end{table}
+
 Eksperimenter med udglatning, zero-padding og windowing 
