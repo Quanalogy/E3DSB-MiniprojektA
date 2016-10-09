@@ -1,0 +1,26 @@
+\section{Using build-in Matlab functions}
+
+Before digging into the implementation of the analysis, a quick introduction to the functions from matlab that are in use.
+\begin{longtabu}{>{\em}X l X}
+\normalfont{\textbf{Function}} & Output & \textbf{Description} \\
+\hline
+audioread(filename) & [y, Fs] & Read an audiofile and put the contents into two outputs. "y" is the sample data, while "Fs" is the sample rate for the data. \\
+fft(y) & Y & Computes the discrete Fourier transform (DFT) of y, using a fast Fourier transform algorithm. \\
+length(x) & L & Return the length of the largest array dimension in x.  \\
+figure(n) & none & Set a new figure for eg a plot to be saved inside. "n" is the figurenumber \\
+plot(x, y, c) & none & Plot a x-sequence "x", y-sequence "y" and a color/representation parameter "c". \\
+title(titleName) & none & Sets the title of a figure. \\
+xlabel(labelName) & none & Sets the label for the x-axis. \\
+ylabel(labelName) & none & Sets the label for the y-axis. \\
+hold on/off & none & Holds a plot inside a figure when "on" is set, stops the holding of the plot when hold off is set. A new plot after a hold off creates a new figure. \\
+grid on & none & set a grid for the plot. \\
+max(x) & M & Return the largest elements in an array. \\
+mean(x) & m & Return the avarage or mean value of an array. \\
+smooth(x, [span], [method]) & xx & Smoothing the data with a default span value of "5" and a default method of "moving". Setting the span and method is optional.\\
+semilogx(Y) & h & Plot data on logarithmic scale on the x-axis. \\
+legend(label1, ..., labelN, 'Location', 'Value') & none & Creates a box for description of one or more plots, color seperated. The value of Location can be described with nord, west, south, east - or in combination. In the following section the parameter "southwest" is used. \\
+cat(dimension, Array1, ..., ArrayN) & C & Concatenate arrays along a specific dimension.  \\
+hamming(L) & w & return a L-point symmetric Hamming window in the column vector w. The formula $w(n)$ is described in section \ref{sec:windowing}. \\
+sum(A) & S & Return the sum of an array, can optionally take another parameter which handle the dimension of the array. \\
+saveas(fig, filename, fileformat) & none & Saves a file with a figure "fig", the filename "filename" and the fileformat "fileformat", at the location of the file being executed. \\
+\end{longtabu}
