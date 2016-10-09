@@ -11,6 +11,7 @@
 \usepackage{siunitx}				% Enheder i math mode
 \usepackage[hidelinks]{hyperref} % clickable refs
 \usepackage{graphicx}
+\usepackage{tabularx}
 \usepackage{minted}
 \graphicspath{{graphics/}}
 
@@ -26,7 +27,11 @@
 \newpage
 \tableofcontents
 
+\input{theory.tex}
+\newpage
 \input{contents.tex}
+
+
 \input{appendix.tex}
 
 

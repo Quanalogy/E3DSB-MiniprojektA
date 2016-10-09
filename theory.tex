@@ -1,0 +1,28 @@
+\section{Theory}
+
+\subsection{Fourier}
+
+\subsection{The dB-scale}
+
+\subsection{Smoothing}
+
+When using Matlab, the "smooth" function take a column vector and smoothen the data by making avarages of a defined span, which by default is 5 datapoints. For this project the default value has been used, hence the prototype for the function is:
+
+\begin{minted}{matlab}
+	Y_smooth = smooth(Y)
+\end{minted}
+
+If another span value is needed the prototype for smooth is:
+
+\begin{minted}{matlab}
+	Y_smooth = smooth(Y, span_value)
+\end{minted}
+
+The smooth function is great for getting an better overview of data with many different values, becuase of the avarages it makes. 
+Take the car sound as an example on figure \ref{fig:Car_figure5:2}, here the red is the fourier transformed function, while the blue is the smoothened function of the red one. It is apparent that the blue signal haven't got the crazy magnitude of the red, but resemples the same data - we can still see the general nature of the signal, it is just represented in a more human readable way.
+
+\subsection{Zero padding}
+
+\subsection{Windowing}
+
+\subsection{Energy}
