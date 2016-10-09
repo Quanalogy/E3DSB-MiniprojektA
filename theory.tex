@@ -16,6 +16,20 @@ where $x(t)$ is some continous signal \cite[p. 53]{DSP}. When a fourier transfor
 
 \subsection{The dB-scale}
 
+The \SI{}{\decibel} scale is used for plotting signals in the frequency domain and is deducted from the bel scale. The bel scale is defined by the base 10 logarithm of the difference between two powers $\log_{10}\frac{P1}{P2}\SI{}{\bel}$
+
+The bel scale itself can be very big which led to the unit decibel, that is one tenth of a bel:
+
+\begin{equation}
+10\log_{10}\frac{P1}{P2}\SI{}{\decibel}
+\end{equation}
+
+This can also be used in combination of a function, which when applied to $X(m)$ gives:
+
+\begin{equation}
+X_{\SI{}{\decibel}}(m) = 10\log_{10}(|X(m)|^2)\SI{}{\decibel} = 20\log_{10}(|X(m)|)\SI{}{\decibel}
+\end{equation}
+
 \subsection{Smoothing}
 
 When using Matlab, the "smooth" function take a column vector and smoothen the data by making avarages of a defined span, which by default is 5 datapoints\cite[smooth]{MATLAB_DOC}. For this project the default value has been used, hence the prototype for the function is:
