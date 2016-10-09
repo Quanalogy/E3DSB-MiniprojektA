@@ -42,6 +42,12 @@ This can also be used in combination of a function, which when applied to $X(m)$
 X_{\SI{}{\decibel}}(m) = 10\log_{10}(|X(m)|^2)\SI{}{\decibel} = 20\log_{10}(|X(m)|)\SI{}{\decibel}
 \end{equation}
 
+When using Matlab a $\log_{10}$ method is present, this is used for this project the following way:
+
+\begin{minted}{matlab}
+YdB = 20*log10(abs(Y));
+\end{minted}
+
 \subsection{Smoothing}
 
 When using Matlab, the "smooth" function takes a column vector and smoothesn the data by making averages of a defined span, which by default is 5 datapoints \cite[smooth]{MATLAB_DOC}. 
@@ -85,6 +91,14 @@ In \cref{sec:analysis} the Hamming window is used, which has the following formu
 w(n) = 0.54-0.46\cos\left(\frac{2\pi n}{N}\right)
 \end{equation}
 
+When using Matlab, this is implemented the following way:
+
+\begin{minted}{matlab}
+w = hamming(N);
+y_win = y.*w;
+Y_win = fft(y_win);
+\end{minted}
+
 \subsection{Energy}
 Later on when the different functions just described in this section is applyied, the energy of a signal is not always the same before and after. When doing the Fourier transform, the Parceval's theorem (\cref{eq:pars}) ensures that the energy before and after are the same, when applying smooth this is not the case.
 
@@ -92,3 +106,13 @@ Later on when the different functions just described in this section is applyied
 	\sum_{n=0}^{N-1}\left|x\left[n\right]\right|^2=\frac{1}{N}\sum_{k=0}^{N-1}\left|X\left[k\right]\right|^2
 	\label{eq:pars}
 \end{equation}
+
+When applied in Matlab for all the needed values (zeropadding, fft, smoothing, windowing):
+
+\begin{minted}{matlab}
+y_E = sum(abs(y).^2)
+Y_E = (1/N)*sum(abs(Y).^2)
+Y_E_smooth = (1/N)*sum(abs(YSmooth).^2)
+Y_E_zpad = (1/N_zpad)*sum(abs(Y_zpad).^2)
+Y_E_win = (1/N)*sum(abs(Y_win).^2)
+\end{minted}
