@@ -7,18 +7,18 @@
 \subsubsection{Analysis}
 
 \begin{figure}
-	\begin{subfigure}[b]{.5\linewidth}
-		\centering
-		\includegraphics[width=\textwidth]{code/Car_figure1.png}
-		\caption{Time Domain.}\label{fig:car_time}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.5\linewidth}
-		\centering
-		\includegraphics[width=\textwidth]{code/Car_figure2.png}
-		\caption{Frequency Domain}\label{fig:car_freq}
-	\end{subfigure}%
-	\caption{Analysis of a car.}
-	\label{fig:car}
+	\centering
+	\subcaptionbox{Time Domain.\label{fig:car_time}}
+	{\includegraphics[width=0.45\linewidth]{code/Car_figure1.png}}
+	\subcaptionbox{Frequency Domain.\label{fig:car_freq}}
+	{\includegraphics[width=0.45\linewidth]{code/Car_figure2.png}}
+	\subcaptionbox{The original fft result vs smoothed result.\label{fig:car_smooth}}
+	{\includegraphics[width=0.45\linewidth]{code/Car_figure3.png}}
+	\subcaptionbox{The original fft result vs zero padded original.\label{fig:car_zero}}
+	{\includegraphics[width=0.45\linewidth]{code/Car_figure4.png}}
+	\subcaptionbox{The original fft result vs windowed original.\label{fig:car_window}}
+	{\includegraphics[width=0.45\linewidth]{code/Car_figure5.png}}
+	\caption{Analysis of a car.}\label{fig:car}
 \end{figure}
 
 
