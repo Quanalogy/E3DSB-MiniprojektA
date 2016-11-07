@@ -1,0 +1,66 @@
+% !TeX document-id = {a39e8ab2-a52f-4b84-8569-c61394829c2b}
+% !TeX TXS-program:compile = txs:///lualatex/[--shell-escape]
+% !TeX TXS-program:lualatex = lualatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+\documentclass[english, a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage{inputenc}
+\usepackage{xcolor}
+%\usepackage[usenames, dvipsnames]{color}
+\definecolor{mygray}{RGB}{198,198,198}
+
+\usepackage{listings}
+\usepackage{minted}
+\setminted[matlab]{breaklines, linenos, bgcolor=mygray, tabsize = 3}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+%For danish setup
+\usepackage{babel}
+
+\usepackage[T1]{fontenc}
+\usepackage{siunitx}				% Enheder i math mode
+\usepackage[hidelinks]{hyperref} % clickable refs
+\usepackage[backend=biber,style=alphabetic,hyperref]{biblatex} % Needed for bibliography
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\usepackage{longtable}
+\usepackage{tabu}
+
+\usepackage{cleveref}
+\usepackage{subcaption}
+
+
+
+
+\bibliography{references} % Needed for bibliography
+\graphicspath{{graphics/}}
+
+
+
+\title{E3DSB Miniprojekt A} 
+\author{	Simon Alexander Alsing, 201304202\\
+			Lasse Østerberg Sangild, 20114274\\
+			Tobias Kalhøj, 201505974}
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+
+\input{theory.tex}
+\clearpage
+\input{matlab_functions.tex}
+\clearpage
+\input{frequency_analysis.tex}
+\clearpage
+\input{energy.tex}
+\input{contents.tex}
+\newpage
+%\input{appendix.tex}
+\printbibliography
+
+\end{document}
