@@ -1,7 +1,13 @@
+% !TEX root = main.tex
+
 \section{Introduction}
 This project investigates the usage of different digital filters as equalizers. The filter types used are Finite Impulse Respones (FIR) and Infinite Impulse Response (IIR) filters.
 
-FIR filters has a finite memory, and only allows an impulse response to affect the system for a FINITE amount of time; such as a lot of digital filters. IIR filters allows the impulse response to affect the system for an INFINITE amount of time, a common example is analog filters containing resistors, capacitors or inductors.
+FIR filters has a finite memory, and only allows an impulse response to affect the system for a FINITE amount of time.
+IIR filters allows the impulse response to affect the system for an INFINITE amount of time.
+There are a few key differences between the FIR and IIR.
+A FIR filter can run on integer math, whereas IIR requires floating point for the calculations not to blow up. The phase is kept much more stable by using a FIR filter, compared to an IIR filter.
+An IIR filter requires fewer coefficients, less memory and is generally faster than a FIR filter.
 
 For this project we are asked to devide the filters into five different bands. Generellay speaking the human hearing is between \SI{20}{\hertz} and \SI{20}{\kilo\hertz} The five bands are taken from \href{https://en.wikipedia.org/wiki/Audio_frequency}{here} and are adjusted to fit our range of five bands in the range of \SIrange{20}{20.000}{\hertz} and are seen in table \ref{tab:FiveBand}.
 
@@ -27,6 +33,26 @@ Der skal i opgaven indgå filtre af begge typer (FIR og IIR). Man har frie hænd
 
 Eksperimenter i opgaven med filterorden og knækfrekvenser. Dokumenter eksperimenterne. Equalizerens samlede impulsrespons og overføringskarakteristik (altså amplitude og fase i frekvens-domænet) skal kunne vises. Dvs. den samlede virkning af de fem filtre fra input til output.
 
-
-
 \section{Expectations}
+We are going to do a few experiments comparing FIR and IIR, but also a few investigating the way either of them works.
+
+\begin{table}
+	\caption{Comparing equivalent IIR- and FIR filters.}
+	\label{tab:IIRvsFIR}
+	\begin{tabularx}{\textwidth}{X X X}
+		Statement to test	& Expected Result	& Result \\
+		\toprule
+		The phase is more stable for a FIR filter & The phase of a signal is affected less by running it thorugh a FIR filter than thorugh an IIR filter. & \\
+		IIR is faster		& Using tic toc in Matlab during the filtering, IIR filter will yield a lower value. & \\
+	\end{tabularx}
+\end{table}
+
+\begin{table}
+	\caption{Investigation of altering the IIR coefficients.}
+	\label{tab:IIRtest}
+	\begin{tabularx}{\textwidth}{X X X}
+		Statement to test	& Expected Result	& Result \\
+		\toprule
+		IIR calculation times scales exponentially by increasing coefficients & By multiplying the coefficients by 2, 4 or 8, the calculation time increasses exponentially. & \\
+	\end{tabularx}
+\end{table}
