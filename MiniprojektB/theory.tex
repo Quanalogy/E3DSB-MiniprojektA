@@ -9,23 +9,21 @@ There are a few key differences between the FIR and IIR.
 A FIR filter can run on integer math, whereas IIR requires floating point for the calculations not to blow up. The phase is kept much more stable by using a FIR filter, compared to an IIR filter.
 An IIR filter requires fewer coefficients, less memory and is generally faster than a FIR filter.
 
-For this project we are asked to devide the filters into five different bands. Generellay speaking the human hearing is between \SI{20}{\hertz} and \SI{20}{\kilo\hertz} The five bands are taken from \href{https://en.wikipedia.org/wiki/Audio_frequency}{here} and are adjusted to fit our range of five bands in the range of \SIrange{20}{20.000}{\hertz} and are seen in table \ref{tab:FiveBand}.
+For this project we are asked to divide the filters into five different bands. Generelly speaking the human hearing is between \SI{20}{\hertz} and \SI{20}{\kilo\hertz} The five bands are taken from \href{https://en.wikipedia.org/wiki/Audio\_frequency}{here} and are adjusted to fit our range of five bands in the range of \SIrange{20}{20000}{\hertz} and are seen in \cref{tab:FiveBand}.
 
 \begin{table}[h]
-	\caption{The five frequency bands used for this miniproject}
+	\caption{The frequency bands filtered out.}
 	\label{tab:FiveBand}
-	\begin{tabularx}{\textwidth}{X X X}
-		\textbf{Frequency} \si{\hertz} & \textbf{Octave} & \textbf{Description} \\
-		20-512 & 2th to 5th & Lower and upper bass \\
-		512-2048 & 6th to 7th & Horn like and tinny quality. Regular speach lies here. \\
-		204-8192 & 8th to 9th & labial(-th sounds) and fricative (-s sounds) type of human speach.\\
-		8192-16384 & 10th & The sound of bells ringing or sibilance in speach (whistle)\\
-		16384-20000 & 11th & The last range of human hearing. \\
-	\end{tabularx}	
+	\begin{tabularx}{\textwidth}{X X}
+		\textbf{Frequency} (\si{\hertz})	& \textbf{Description} \\
+		\toprule
+		\numrange{0}{32}		& The lower human threshold. \\
+		\numrange{32}{512}		& Rythm frequencies. \\
+		\numrange{512}{2048}	& Horn like and tinny quality. Regular speach lies here. \\
+		\numrange{2048}{8192}	& Labial and fricative sounds. \\
+		\numrange{8192}{20000}	& Sounds of bells and ringing. \\
+	\end{tabularx}
 \end{table}
-
-
-
 
 Lav i Matlab en audio equalizer. Equalizeren skal kunne justere niveauet på et indkommende lydsignal individuelt i fem forskellige frekvensbånd fordelt over (og dækkende) det hørbare spektrum med +/- 12 dB. Eksempelvis et bånd fra 0 hertz (eller måske 20 Hz) til 200 Hz. Herefter evt. 200-700 Hz og så fremdeles.
 
@@ -34,6 +32,7 @@ Der skal i opgaven indgå filtre af begge typer (FIR og IIR). Man har frie hænd
 Eksperimenter i opgaven med filterorden og knækfrekvenser. Dokumenter eksperimenterne. Equalizerens samlede impulsrespons og overføringskarakteristik (altså amplitude og fase i frekvens-domænet) skal kunne vises. Dvs. den samlede virkning af de fem filtre fra input til output.
 
 \section{Expectations}
+\label{sec:expectations}
 We are going to do a few experiments comparing FIR and IIR, but also a few investigating the way either of them works.
 
 \begin{table}
