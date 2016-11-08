@@ -6,7 +6,6 @@
 *.mat
 
 # Fjernet musikfiler fra Miniprojekt B
-MiniprojektB/*.flac
 MiniprojektB/*.mp4
 
 # Fjerner .pdf billedfiler fra Miniprojekt B
