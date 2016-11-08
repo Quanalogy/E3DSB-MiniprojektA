@@ -1,4 +1,4 @@
-function [] = SaveAsPdf(filename, retning)
-orient(gcf,retning)
+function [] = SaveAsPdf(filename, retning, fig)
+orient(fig, retning)
 print(filename, '-dpdf', '-bestfit');
 end

@@ -2,6 +2,9 @@
 *.m~
 *.asv
 
+# Remove Matlab .mat files (they are huge)
+*.mat
+
 # Fjernet musikfiler fra Miniprojekt B
 MiniprojektB/*.flac
 MiniprojektB/*.mp4
