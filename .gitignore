@@ -1,5 +1,9 @@
 ## Remove Matlab temp files
 *.m~
+*.asv
+
+# Fjernet .mp4 fra Miniprojekt B
+MiniprojektB/*.mp4
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
