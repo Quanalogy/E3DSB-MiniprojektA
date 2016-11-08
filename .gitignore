@@ -2,8 +2,12 @@
 *.m~
 *.asv
 
-# Fjernet .mp4 fra Miniprojekt B
+# Fjernet musikfiler fra Miniprojekt B
+MiniprojektB/*.flac
 MiniprojektB/*.mp4
+
+# Fjerner .pdf billedfiler fra Miniprojekt B
+MiniprojektB/*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
