@@ -1,1 +1,3 @@
-% HÃ¸rbare spektrum, 5-delt, bÃ¥de IIR og FIR
+% Hørbare spektrum, 5-delt, både IIR og FIR
+
+[y,Fs] = audioread('./car.wav');
