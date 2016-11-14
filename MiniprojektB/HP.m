@@ -21,4 +21,5 @@ function [figW, figHz] = HP(cutFreq, Fs, y, figOrgFreq)
     hold on
     semilogx(frequency_samples(1:N/2), YdBHP(1:N/2), 'b');
     legend({'original', 'highpass'}, 'FontSize', 16);
+    legend('Location','best');
 end
