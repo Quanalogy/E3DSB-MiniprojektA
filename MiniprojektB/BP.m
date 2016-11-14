@@ -2,7 +2,7 @@ function [figW, figHz] = BP(freqRange, Fs, y, figOrgFreq)
     N = length(y);
     frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
     BandPass = freqRange/(Fs/2);
-    BPass = fir1(400,BandPass,'bandpass');
+    BPass = fir1(10,BandPass,'bandpass');
     figW = figure;
     hold on
     title('Filter characteristics');
@@ -21,4 +21,5 @@ function [figW, figHz] = BP(freqRange, Fs, y, figOrgFreq)
     hold on
     semilogx(frequency_samples(1:N/2), YdBBP(1:N/2), 'b');
     legend({'original', 'bandpass'}, 'FontSize', 16);
+    legend('Location','best');
 end
