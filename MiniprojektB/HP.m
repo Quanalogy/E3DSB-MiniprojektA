@@ -1,4 +1,6 @@
-function [figW, figHz] = HP(cutFreq, Fs, y, N, frequency_samples, figOrgFreq)
+function [figW, figHz] = HP(cutFreq, Fs, y, figOrgFreq)
+    N = length(y);
+    frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
     HighPass = cutFreq/(Fs/2);
     HiPass = fir1(400,HighPass,'high');
     figW = figure;
