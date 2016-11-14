@@ -3,13 +3,14 @@
 close all
 
 reloadfile  = 0;    % Only set to 1 for first run
-printpdf    = 0;    % Set to 1 for outputting .pdf files
-showOrgTime = 0;    % Set to 1 to show the original signal in the
+printpdf    = 1;    % Set to 1 for outputting .pdf files
+showOrgTime = 1;    % Set to 1 to show the original signal in the
                     % time domain
-showOrgFreq = 0;    % Set to 1 to show the original signal in the
+showOrgFreq = 1;    % Set to 1 to show the original signal in the
                     % frequency domain 
 doHP        = 0;    % Create a HP filter and show the result using freqz
 doBP1       = 1;    % Create bandpass 1 (100 Hz - 400 Hz)
+doBP2       = 0;    % Create Stop Band (600 Hz - 2000 Hz)
 
 % Load original data
 if reloadfile
@@ -99,5 +100,17 @@ if doBP1
     if printpdf
         SaveAsPdf('OrgBP1Freq', 'landscape', figOrgFreq);
         SaveAsPdf('BP1normFreq', 'portrait', HPFreqz);
+    end
+end
+
+%% Create stopband filter and plot with freqz for clarity
+
+if doBP2
+    [HPFreqz, figOrgFreq] = SP([600 2000],Fs,y,figOrgFreq);
+
+    % Gem som pdf
+    if printpdf
+        SaveAsPdf('OrgSPFreq', 'landscape', figOrgFreq);
+        SaveAsPdf('SPnormFreq', 'portrait', HPFreqz);
     end
 end
