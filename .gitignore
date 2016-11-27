@@ -6,7 +6,7 @@
 *.mat
 
 # Fjernet musikfiler fra Miniprojekt B
-MiniprojektB/*.mp4
+MiniprojektB/matlab/*.mp4
 
 # Fjerner .pdf billedfiler fra Miniprojekt B
 MiniprojektB/*.pdf
