@@ -1,0 +1,49 @@
+% !TEX root = main.tex
+
+\section{Results}
+
+\subsection{FIR vs IIR speed}
+The speed of the filters was found by using the built in matlab tic toc function around the filter function as shown in \cref{list:speed}.
+
+\begin{listing}
+	\begin{minted}{matlab}
+		tic
+		yBP = filter(b,a,y);
+		toc
+	\end{minted}
+	\caption{Demonstration of the code used to find the calculation time of the filters.}
+	\label{list:speed}
+\end{listing}
+
+\begin{table}[!htb]
+	\centering
+	\caption{Comparing the calculation speed of FIR and IIR filters.}
+	\label{tab:speed}
+	\begin{tabular}{cc}
+		Type of filter & Time(\si{\second}) \\
+		\midrule
+		FIR low pass & \num{2.275644}\\
+		IIR low pass & \num{0.404421}\\
+		FIR band pass & \num{2.283198}\\
+		IIR band pass & \num{0.463531}
+	\end{tabular}
+\end{table}
+
+\subsection{FIR and IIR speed dependency of filter order}
+To test this a band pass from \SIrange{2048}{8192}{\hertz} will be created using different orders of filters.
+\begin{table}[!htb]
+	\centering
+	\caption{Comparing the calculation speed of FIR filters with different orders.}
+	\label{tab:FIR_speed}
+	\begin{tabular}{ccc}
+		Order of filter & FIR time(\si{\second}) & IIR time (\si{\second}) \\
+		\midrule
+		1 & & \\
+		5 & & \\
+		10 & & \\
+		100 & & \\
+		500 & & \\
+		1000 & & \\
+		
+	\end{tabular}
+\end{table}
