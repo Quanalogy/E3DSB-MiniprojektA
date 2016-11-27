@@ -10,7 +10,8 @@ function [figW, figHz] = BP(freqRange, Fs, y, figOrgFreq)
 
     % Gem og visualiser frekvensændringen
     yBP = filter(BPass,1,y);
-    %audiowrite('HP32Hz.mp4', yHP, Fs);
+    name = ['BP_', freqRange(1), '_Hz_to_', freqRange(2), '_Hz.mp4'];
+    audiowrite(name, yBP, Fs);
     YBP = fft(yBP);
     YdBBP= 20*log10(abs(YBP));
 

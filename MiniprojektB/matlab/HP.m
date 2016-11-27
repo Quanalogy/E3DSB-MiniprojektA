@@ -10,7 +10,8 @@ function [figW, figHz] = HP(cutFreq, Fs, y, figOrgFreq)
 
     % Gem og visualiser frekvensændringen
     yHP = filter(HiPass,1,y);
-    %audiowrite('HP32Hz.mp4', yHP, Fs);
+    name = ['HP_', cutFreq, '_Hz.mp4'];
+    audiowrite('HP32Hz.mp4', yHP, Fs);
     YHP = fft(yHP);
     YdBHP = 20*log10(abs(YHP));
 

@@ -49,8 +49,6 @@ if showOrgTime
     end
 end
 
-
-
 %% Create fft and plot the result
 
 % use DFT (fft)

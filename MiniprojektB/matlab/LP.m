@@ -10,7 +10,8 @@ function [figW, figHz] = LP(cutFreq, Fs, y, figOrgFreq)
 
     % Gem og visualiser frekvensændringen
     yLP = filter(LoPass,1,y);
-    %audiowrite('LP32Hz.mp4', yLP, Fs);
+    name = ['LP_', cutFreq, '_Hz.mp4'];
+    audiowrite(name, yLP, Fs);
     YLP = fft(yLP);
     YdBLP = 20*log10(abs(YLP));
 
