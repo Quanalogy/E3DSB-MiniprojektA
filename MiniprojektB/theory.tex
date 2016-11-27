@@ -12,7 +12,7 @@ An IIR filter requires fewer coefficients, less memory and is generally faster t
 For this project we are asked to divide the filters into five different bands. Generelly speaking the human hearing is between \SI{20}{\hertz} and \SI{20}{\kilo\hertz} The five bands are inspired by the Wikipedia article on Audio frequency\footnote{https://en.wikipedia.org/wiki/Audio\_frequency} and are adjusted to fit our range of five bands in the range of \SIrange{0}{22050}{\hertz}. The used values are seen in \cref{tab:FiveBand}.
 
 \begin{table}[h]
-	\caption{The frequency bands filtered out. \SI{22050}{\hertz} is the upper limit of frequencies for the analyzed music.
+	\caption{The frequency bands filtered out. \SI{22050}{\hertz} is the upper limit of frequencies for the analyzed music, which is sampled at \SI{44100}{\hertz}.}
 	\label{tab:FiveBand}
 	\begin{tabularx}{\textwidth}{X X}
 		\textbf{Frequency} (\si{\hertz})	& \textbf{Description} \\
@@ -33,6 +33,8 @@ Eksperimenter i opgaven med filterorden og knækfrekvenser. Dokumenter eksperime
 
 \section{Expectations}
 \label{sec:expectations}
+
+First FIR filters for the bands in \cref{tab:FiveBand} are going to be implemented converted into an .mp4 file for listening. It is expected that the implementation of filters will be most easily heard at frequencies from \SIrange{512}{8192}{\hertz}
 We are going to do a few experiments comparing FIR and IIR, but also a few investigating the way either of them works.
 
 \begin{table}

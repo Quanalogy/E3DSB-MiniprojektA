@@ -8,11 +8,11 @@ showOrgTime = 1;    % Set to 1 to show the original signal in the
                     % time domain
 showOrgFreq = 1;    % Set to 1 to show the original signal in the
                     % frequency domain 
-doHP        = 0;    % Create a HP filter and show the result using freqz
+doHP        = 1;    % Create a HP filter and show the result using freqz
 doBP1       = 0;    % Create bandpass 1 (100 Hz - 400 Hz)
 doBP2       = 0;    % Create Stop Band (600 Hz - 2000 Hz)
 doBP3       = 0;    % Create band pass (1000 Hz - 3000 Hz)
-doLP        = 1;    % Create low pass 3000 Hz
+doLP        = 0;    % Create low pass 3000 Hz
 
 % Load original data
 if reloadfile
@@ -37,8 +37,8 @@ if showOrgTime
     % Plot in time of sound file
     hold on
     title([figureTitle, ' input, in time domain']);
-    xlabel('Time[s]');
-    ylabel('Magnitude');
+    xlabel('Time[s]','FontSize', 14);
+    ylabel('Magnitude','FontSize', 14);
     xlim([0 381]);
     plot(sample_times,y,'b');
     hold off
@@ -68,9 +68,9 @@ axesOrgFreq = axes('Parent',figOrgFreq);
 hold on
 set(axesOrgFreq,'XScale','log');
 grid on
-title([figureTitle, ' input, in frequency domain(FFT)']);
-xlabel('Frequency [Hz]');
-ylabel('Magnitude [dB]');
+title([figureTitle, ' input, in frequency domain(FFT)'],'FontSize',16);
+xlabel('Frequency [Hz]','FontSize', 14);
+ylabel('Magnitude [dB]','FontSize', 14);
 xlim([10 Fs/2]);
 semilogx(frequency_samples(1:N/2), YdB(1:N/2), 'r');
 
@@ -82,12 +82,13 @@ end
 %% Create high pass filter and plot with freqz for clarity
 
 if doHP
-    [HPFreqz, figOrgFreq] = HP(100,Fs,y,figOrgFreq);
+    figW = figure;
+    [figW, figOrgFreq] = HP(100,Fs,y,figOrgFreq, figW);
 
     % Gem som pdf
     if printpdf
         SaveAsPdf('OrgHPFreq', 'landscape', figOrgFreq);
-        SaveAsPdf('HPnormFreq', 'portrait', HPFreqz);
+        SaveAsPdf('HPnormFreq', 'portrait', figW);
     end
 end
 

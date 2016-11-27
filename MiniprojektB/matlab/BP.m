@@ -10,7 +10,7 @@ function [figW, figHz] = BP(freqRange, Fs, y, figOrgFreq)
 
     % Gem og visualiser frekvensændringen
     yBP = filter(BPass,1,y);
-    name = ['BP_', freqRange(1), '_Hz_to_', freqRange(2), '_Hz.mp4'];
+    name = ['BP_', num2str(freqRange(1)), '_Hz_to_', num2str(freqRange(2)), '_Hz.mp4'];
     audiowrite(name, yBP, Fs);
     YBP = fft(yBP);
     YdBBP= 20*log10(abs(YBP));
@@ -18,7 +18,8 @@ function [figW, figHz] = BP(freqRange, Fs, y, figOrgFreq)
     % Plot of discrete fourier transform
     figHz = figure(figOrgFreq);
     hold off
-    title(['Original and Bandpass ', BandPass(1), ' Hz -', BandPass(2), ' Hz in frequency domain(FFT)']);
+    title(['Original and Bandpass ', num2str(BandPass(1)), ' Hz -',
+        num2str(BandPass(2)), ' Hz in frequency domain(FFT)']);
     hold on
     semilogx(frequency_samples(1:N/2), YdBBP(1:N/2), 'b');
     legend({'original', 'bandpass'}, 'FontSize', 16);
