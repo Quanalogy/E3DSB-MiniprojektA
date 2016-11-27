@@ -10,7 +10,7 @@
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.9\linewidth]{matlab/OrgFreq}
-	\caption{Frequncy spectrum of the non-filtered signal.}
+	\caption{Frequency spectrum of the non-filtered signal.}
 	\label{fig:orgfreq}
 \end{figure}
 
@@ -18,6 +18,42 @@
 All frequency bands presented in \cref{tab:FiveBand} will be filtered using FIR. Some of them will also be filtered using IIR to test the expectations presented in \cref{sec:expectations}.
 
 \subsubsection{FIR}
+The five \crefrange{fig:FIR_hipass}{fig:FIR_lowpass} demonstrate different kinds of FIR-filtering, which are all implemented using the matlab fir1 function. \Cref{fig:FIR_hipass} is a highpass filter with a cutoff frequency of \SI{512}{\hertz} and an order of 70. \Cref{fig:FIR_bandpass1} shows a bandpass with cutoff frequencies of \SI{512}{\hertz} and \SI{2048}{\hertz} and an order of 50. \Cref{fig:FIR_stopband} shows a stopband filter with cutoff frquencies of \SI{2048}{\hertz} and \SI{8192}{\hertz} and an order of 50. \Cref{fig:FIR_bandpass2} shows a bandpass filter with cutoff frequencies of \SI{8192}{\hertz} and \SI{16384}{\hertz} and an order of 50. The last filter, \cref{fig:FIR_lowpass} shows a lowpass filter with a cutoff frequency of \SI{16384}{\hertz} and an order of 5.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth]{matlab/OrgHPFreq}
+	\caption{Frequency spectrum of the non-filtered signal(red) and the highpass filtered signal(blue).}
+	\label{fig:FIR_hipass}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth]{matlab/OrgBP1Freq}
+	\caption{Frequency spectrum of the non-filtered signal(red) and the first bandpass filtered signal(blue).}
+	\label{fig:FIR_bandpass1}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth]{matlab/OrgSPFreq}
+	\caption{Frequency spectrum of the non-filtered signal(red) and the stopband filtered signal(blue).}
+	\label{fig:FIR_stopband}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth]{matlab/OrgBP3Freq}
+	\caption{Frequency spectrum of the non-filtered signal(red) and the second bandpass filtered signal(blue).}
+	\label{fig:FIR_bandpass2}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth]{matlab/OrgLPFreq}
+	\caption{Frequency spectrum of the non-filtered signal(red) and the lowpass filtered signal(blue).}
+	\label{fig:FIR_lowpass}
+\end{figure}
 
 
 \subsubsection{IIR}
