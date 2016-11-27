@@ -4,7 +4,7 @@ function [] = IIRspeed(freqRange, Fs, y,x)
     [b,a] = butter(x,BandPass,'bandpass');
 
     % Gem og visualiser frekvensændringen
-    disp(['IIR order',num2str(x)]);
+    disp(['IIR order ',num2str(x)]);
     tic
     filter(b,a,y);
     toc

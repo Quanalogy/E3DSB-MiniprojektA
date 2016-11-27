@@ -4,7 +4,7 @@ function [] = FIRspeed(freqRange, Fs, y,x)
     b = fir1(x,BandPass,'bandpass');
 
     % Gem og visualiser frekvensændringen
-    disp(['FIR order',num2str(x)]);
+    disp(['FIR order ',num2str(x)]);
     tic
     filter(b,1,y);
     toc

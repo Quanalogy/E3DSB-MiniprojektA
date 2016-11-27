@@ -6,17 +6,17 @@ reloadfile  = 0;    % Only set to 1 for first run
 printpdf    = 0;    % Set to 1 for outputting .pdf files
 showOrgTime = 0;    % Set to 1 to show the original signal in the
                     % time domain
-showOrgFreq = 0;    % Set to 1 to show the original signal in the
+showOrgFreq = 1;    % Set to 1 to show the original signal in the
                     % frequency domain 
 doHP        = 0;    % Create a HP filter and show the result using freqz
 doBP1       = 0;    % Create bandpass 1 (512 Hz - 2048 Hz)
 doBP2       = 0;    % Create Stop Band (2048 Hz - 8192 Hz)
 doBP3       = 0;    % Create band pass (8192 Hz - 16384 Hz)
 doLP        = 0;    % Create low pass 16384 Hz
-doIIRHP     = 0;    % IIR Highpass(512 Hz)
+doIIRHP     = 1;    % IIR Highpass(512 Hz)
 doIIRBP     = 0;    % IIR bandpass (512 Hz - 2048 Hz)
 doIIRexp    = 0;    % Check IIR coefficient speeds
-doSPEED     = 1;    % Find speeds
+doSPEED     = 0;    % Find speeds
 
 % Load original data
 if reloadfile
@@ -185,6 +185,4 @@ if doSPEED
     IIRspeed([2048 8192],Fs,y,100);
     FIRspeed([2048 8192],Fs,y,500);
     IIRspeed([2048 8192],Fs,y,500);
-    FIRspeed([2048 8192],Fs,y,1000);
-    IIRspeed([2048 8192],Fs,y,1000);
 end
