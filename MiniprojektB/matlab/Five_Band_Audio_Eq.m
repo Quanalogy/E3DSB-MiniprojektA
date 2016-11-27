@@ -4,15 +4,15 @@ close all
 
 reloadfile  = 0;    % Only set to 1 for first run
 printpdf    = 1;    % Set to 1 for outputting .pdf files
-showOrgTime = 1;    % Set to 1 to show the original signal in the
+showOrgTime = 0;    % Set to 1 to show the original signal in the
                     % time domain
 showOrgFreq = 1;    % Set to 1 to show the original signal in the
                     % frequency domain 
-doHP        = 1;    % Create a HP filter and show the result using freqz
-doBP1       = 0;    % Create bandpass 1 (100 Hz - 400 Hz)
-doBP2       = 0;    % Create Stop Band (600 Hz - 2000 Hz)
-doBP3       = 0;    % Create band pass (1000 Hz - 3000 Hz)
-doLP        = 0;    % Create low pass 3000 Hz
+doHP        = 0;    % Create a HP filter and show the result using freqz
+doBP1       = 0;    % Create bandpass 1 (512 Hz - 2048 Hz)
+doBP2       = 1;    % Create Stop Band (2048 Hz - 8192 Hz)
+doBP3       = 0;    % Create band pass (8192 Hz - 16384 Hz)
+doLP        = 0;    % Create low pass 16384 Hz
 
 % Load original data
 if reloadfile
@@ -83,7 +83,7 @@ end
 
 if doHP
     figW = figure;
-    [figW, figOrgFreq] = HP(100,Fs,y,figOrgFreq, figW);
+    [figW, figOrgFreq] = HP(512,Fs,y,figOrgFreq, figW);
 
     % Gem som pdf
     if printpdf
@@ -95,7 +95,7 @@ end
 %% Create bandpass filter and plot with freqz for clarity
 
 if doBP1
-    [HPFreqz, figOrgFreq] = BP([100 400],Fs,y,figOrgFreq);
+    [HPFreqz, figOrgFreq] = BP([512 2048],Fs,y,figOrgFreq);
 
     % Gem som pdf
     if printpdf
@@ -107,7 +107,7 @@ end
 %% Create stopband filter and plot with freqz for clarity
 
 if doBP2
-    [HPFreqz, figOrgFreq] = SP([600 2000],Fs,y,figOrgFreq);
+    [HPFreqz, figOrgFreq] = SP([2048 8192],Fs,y,figOrgFreq);
 
     % Gem som pdf
     if printpdf
@@ -118,7 +118,7 @@ end
 
 %% Create bandpass filter and plot with freqz for clarity
 if doBP3
-    [HPFreqz, figOrgFreq] = BP([1000 3000],Fs,y,figOrgFreq);
+    [HPFreqz, figOrgFreq] = BP([8192 16384],Fs,y,figOrgFreq);
 
     % Gem som pdf
     if printpdf
@@ -130,7 +130,7 @@ end
 %% Create LP filter and plot with freqz for clarity
 
 if doLP
-    [HPFreqz, figOrgFreq] = LP(3000,Fs,y,figOrgFreq);
+    [HPFreqz, figOrgFreq] = LP(16384,Fs,y,figOrgFreq);
 
     % Gem som pdf
     if printpdf

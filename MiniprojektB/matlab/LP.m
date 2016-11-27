@@ -2,7 +2,7 @@ function [figW, figHz] = LP(cutFreq, Fs, y, figOrgFreq)
     N = length(y);
     frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
     LowPass = cutFreq/(Fs/2);
-    LoPass = fir1(400,LowPass,'low');
+    LoPass = fir1(5,LowPass,'low');
     figW = figure;
     hold on
     title('Filter characteristics');
@@ -18,7 +18,7 @@ function [figW, figHz] = LP(cutFreq, Fs, y, figOrgFreq)
     % Plot of discrete fourier transform
     figHz = figure(figOrgFreq);
     hold off
-    title(['Original and LP', ' in frequency domain(FFT)']);
+    title(['Original and LP(16384 Hz)', ' in frequency domain(FFT)']);
     hold on
     semilogx(frequency_samples(1:N/2), YdBLP(1:N/2), 'b');
     legend({'original', 'lowpass'}, 'FontSize', 16);
