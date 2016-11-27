@@ -9,8 +9,10 @@ showOrgTime = 1;    % Set to 1 to show the original signal in the
 showOrgFreq = 1;    % Set to 1 to show the original signal in the
                     % frequency domain 
 doHP        = 0;    % Create a HP filter and show the result using freqz
-doBP1       = 1;    % Create bandpass 1 (100 Hz - 400 Hz)
+doBP1       = 0;    % Create bandpass 1 (100 Hz - 400 Hz)
 doBP2       = 0;    % Create Stop Band (600 Hz - 2000 Hz)
+doBP3       = 0;    % Create band pass (1000 Hz - 3000 Hz)
+doLP        = 1;    % Create low pass 3000 Hz
 
 % Load original data
 if reloadfile
@@ -112,5 +114,28 @@ if doBP2
     if printpdf
         SaveAsPdf('OrgSPFreq', 'landscape', figOrgFreq);
         SaveAsPdf('SPnormFreq', 'portrait', HPFreqz);
+    end
+end
+
+%% Create bandpass filter and plot with freqz for clarity
+if doBP3
+    [HPFreqz, figOrgFreq] = BP([1000 3000],Fs,y,figOrgFreq);
+
+    % Gem som pdf
+    if printpdf
+        SaveAsPdf('OrgBP3Freq', 'landscape', figOrgFreq);
+        SaveAsPdf('BP3normFreq', 'portrait', HPFreqz);
+    end
+end
+
+%% Create LP filter and plot with freqz for clarity
+
+if doLP
+    [HPFreqz, figOrgFreq] = LP(3000,Fs,y,figOrgFreq);
+
+    % Gem som pdf
+    if printpdf
+        SaveAsPdf('OrgLPFreq', 'landscape', figOrgFreq);
+        SaveAsPdf('LPnormFreq', 'portrait', HPFreqz);
     end
 end
