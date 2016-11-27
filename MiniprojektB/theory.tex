@@ -6,7 +6,7 @@ This project investigates the usage of different digital filters as equalizers. 
 FIR filters has a finite memory, and only allows an impulse response to affect the system for a FINITE amount of time.
 IIR filters allows the impulse response to affect the system for an INFINITE amount of time.
 There are a few key differences between the FIR and IIR.
-A FIR filter can run on integer math, whereas IIR requires floating point for the calculations not to blow up. The phase is kept much more stable by using a FIR filter, compared to an IIR filter.
+A FIR filter can run on integer math, whereas IIR requires floating point for the calculations not to blow up.
 An IIR filter requires fewer coefficients, less memory and is generally faster than a FIR filter.
 
 For this project we are asked to divide the filters into five different bands. Generelly speaking the human hearing is between \SI{20}{\hertz} and \SI{20}{\kilo\hertz} The five bands are inspired by the Wikipedia article on Audio frequency\footnote{https://en.wikipedia.org/wiki/Audio\_frequency} and are adjusted to fit our range of five bands in the range of \SIrange{0}{22050}{\hertz}. The used values are seen in \cref{tab:FiveBand}.
@@ -16,7 +16,7 @@ For this project we are asked to divide the filters into five different bands. G
 	\label{tab:FiveBand}
 	\begin{tabularx}{\textwidth}{X X}
 		\textbf{Frequency} (\si{\hertz})	& \textbf{Description} \\
-		\toprule
+		\midrule
 		\numrange{0}{512}		& Rhythm frequencies. \\
 		\numrange{512}{2048}	& Horn like and tinny quality. Regular speach lies here. \\
 		\numrange{2048}{8192}	& Labial and fricative sounds. \\
@@ -34,26 +34,5 @@ Eksperimenter i opgaven med filterorden og knækfrekvenser. Dokumenter eksperime
 \section{Expectations}
 \label{sec:expectations}
 
-First FIR filters for the bands in \cref{tab:FiveBand} are going to be implemented converted into an .mp4 file for listening. It is expected that the implementation of filters will be most easily heard at frequencies from \SIrange{512}{8192}{\hertz}
-We are going to do a few experiments comparing FIR and IIR, but also a few investigating the way either of them works.
-
-\begin{table}
-	\caption{Comparing equivalent IIR- and FIR filters.}
-	\label{tab:IIRvsFIR}
-	\begin{tabularx}{\textwidth}{X X X}
-		Statement to test	& Expected Result	& Result \\
-		\toprule
-		The phase is more stable for a FIR filter & The phase of a signal is affected less by running it thorugh a FIR filter than through an IIR filter. & \\
-		IIR is faster		& Using tic toc in Matlab during the filtering, IIR filter will yield a lower value. & \\
-	\end{tabularx}
-\end{table}
-
-\begin{table}
-	\caption{Investigation of altering the IIR coefficients.}
-	\label{tab:IIRtest}
-	\begin{tabularx}{\textwidth}{X X X}
-		Statement to test	& Expected Result	& Result \\
-		\toprule
-		IIR calculation time scales exponentially with increasing coefficients. & By multiplying the coefficients by 2, 4 or 8, the calculation time increases exponentially. & \\
-	\end{tabularx}
-\end{table}
+First FIR filters for the bands in \cref{tab:FiveBand} are going to be implemented converted into an .mp4 file for listening. It is expected that the implementation of filters will be most easily heard at frequencies from \SIrange{512}{8192}{\hertz}.
+We are going to do a few speed tests. First testing to see how much faster IIR is compared to FIR at comparable output results (not filter order). Then some testing of the impact of filter order on the computation speed of the two filters.

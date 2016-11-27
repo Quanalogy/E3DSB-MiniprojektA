@@ -1,4 +1,4 @@
-function [figW, figHz] = IIRLP(cutFreq, Fs, y, figOrgFreq)
+function [figW, figHz] = IIRHP(cutFreq, Fs, y, figOrgFreq)
     N = length(y);
     frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
     HighPass = cutFreq/(Fs/2);
@@ -9,7 +9,9 @@ function [figW, figHz] = IIRLP(cutFreq, Fs, y, figOrgFreq)
     freqz(b,a);
 
     % Gem og visualiser frekvensændringen
+    tic
     yHP = filter(b,a,y);
+    toc
     name = ['IIR_HP_', num2str(cutFreq), '_Hz.mp4'];
     audiowrite(name, yHP, Fs);
     YHP = fft(yHP);

@@ -10,7 +10,9 @@ function [figfreq, figHz] = HP(cutFreq, Fs, y, figOrgFreq, figfreqz)
     freqz(HiPass,1);
 
     % Gem og visualiser frekvensændringen
+    tic
     yHP = filter(HiPass,1,y);
+    toc
     name = ['HP_', num2str(cutFreq), '_Hz.mp4'];
     audiowrite(name, yHP, Fs);
     YHP = fft(yHP);

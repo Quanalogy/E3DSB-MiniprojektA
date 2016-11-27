@@ -13,7 +13,9 @@ doBP1       = 0;    % Create bandpass 1 (512 Hz - 2048 Hz)
 doBP2       = 0;    % Create Stop Band (2048 Hz - 8192 Hz)
 doBP3       = 0;    % Create band pass (8192 Hz - 16384 Hz)
 doLP        = 0;    % Create low pass 16384 Hz
-doIIRHP     = 1;    % IIR Highpass(512 Hz)
+doIIRHP     = 0;    % IIR Highpass(512 Hz)
+doIIRBP     = 0;    % IIR bandpass (512 Hz - 2048 Hz)
+doIIRexp    = 1;    % Check IIR coefficient speeds
 
 % Load original data
 if reloadfile
@@ -146,7 +148,26 @@ if doIIRHP
 
     % Gem som pdf
     if printpdf
-        SaveAsPdf('OrgLPFreq', 'landscape', figOrgFreq);
+        SaveAsPdf('OrgIIRLPFreq', 'landscape', figOrgFreq);
         SaveAsPdf('LPnormFreq', 'portrait', HPFreqz);
     end
+end
+
+%% IIR BP filter
+if doIIRBP
+    [HPFreqz, figOrgFreq] = IIRBP([512 2048],Fs,y,figOrgFreq);
+
+    % Gem som pdf
+    if printpdf
+        SaveAsPdf('OrgIIRBPFreq', 'landscape', figOrgFreq);
+        SaveAsPdf('BP1normFreq', 'portrait', HPFreqz);
+    end
+end
+
+%% IIR BP filter
+if doIIRexp
+    IIRexp([512 2048],Fs,y,2);
+    IIRexp([512 2048],Fs,y,4);
+    IIRexp([512 2048],Fs,y,6);
+    IIRexp([512 2048],Fs,y,80000);
 end
