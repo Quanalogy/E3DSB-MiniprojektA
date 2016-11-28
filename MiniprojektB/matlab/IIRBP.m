@@ -2,7 +2,7 @@ function [figW, figHz] = IIRBP(freqRange, Fs, y, figOrgFreq)
     N = length(y);
     frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
     BandPass = freqRange/(Fs/2);
-    [b,a] = butter(1,BandPass,'bandpass');
+    [b,a] = butter(2,BandPass,'bandpass');
     figW = figure;
     hold on
     title('Filter characteristics');
@@ -13,7 +13,7 @@ function [figW, figHz] = IIRBP(freqRange, Fs, y, figOrgFreq)
     yBP = filter(b,a,y);
     toc
     name = ['IIRBP_', num2str(freqRange(1)), '_Hz_to_', num2str(freqRange(2)), '_Hz.mp4'];
-    audiowrite(name, yBP, Fs);
+    %audiowrite(name, yBP, Fs);
     YBP = fft(yBP);
     YdBBP= 20*log10(abs(YBP));
 

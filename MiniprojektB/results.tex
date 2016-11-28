@@ -30,11 +30,11 @@ The speed of the filters was found by using the built in matlab tic toc function
 \end{table}
 
 \subsection{FIR and IIR speed dependency of filter order}
-To test this a band pass from \SIrange{2048}{8192}{\hertz} will be created using different orders of filters. It is important to note that you cannot compare FIR and IIR filters with the same order in this table, as IIR filters can achieve the same effect on the output as the FIR, but with a much lower filter order.
+To test this a band pass from \SIrange{2048}{8192}{\hertz} will be created using different orders of filters. It is important to note that you cannot compare FIR and IIR filters with the same order in this table, as IIR filters can achieve the same effect on the output as the FIR, but with a much lower filter order. The results are shown in \cref{tab:order_speed}.
 \begin{table}[!htb]
 	\centering
 	\caption{Comparing the calculation speed of FIR and IIR filters with different orders.}
-	\label{tab:FIR_speed}
+	\label{tab:order_speed}
 	\begin{tabular}{ccc}
 		Order of filter & FIR time (\si{\second}) & IIR time (\si{\second}) \\
 		\midrule
