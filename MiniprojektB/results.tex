@@ -68,20 +68,22 @@ As seen in \cref{tab:phase} the FIR filter has a starting phase of \num{0} and e
 
 It should also be noted that the phase of the FIR filter phase is linear, as seen in\cref{fig:FIR_linearphase}, as long as the filter order is low enough as not to cause any ripples (as seen in e.g. \cref{fig:FIR_50Kaiser}). On the other hand an IIR filter is not linear, as seen in \cref{fig:IIR_phase}.
 
-\begin{figure}
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.9\linewidth,clip, trim={3cm 9cm 4cm 15.3cm}]{matlab/FIR_linear_phase}
 	\caption{Linearity of a 5th order FIR filter.}
 	\label{fig:FIR_linearphase}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.9\linewidth,clip, trim={3cm 9cm 4cm 15.3cm}]{matlab/IIR_phase}
 	\caption{Non-linearity of a 5th order IIR filter.}
 	\label{fig:IIR_phase}
 \end{figure}
-	
+
+\clearpage
+
 \subsection{FIR Filter Effect on the Sound of the Music}
 \begin{table}[!htb]
 	\caption{FIR filter effect on the sound of the music}
