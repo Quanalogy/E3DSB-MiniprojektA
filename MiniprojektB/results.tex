@@ -45,3 +45,19 @@ To test this a band pass from \SIrange{2048}{8192}{\hertz} will be created using
 		500		& \num{6.044611}	 & \num{21.773430} \\
 	\end{tabular}
 \end{table}
+
+\subsection{Windows Effect on the FIR Impluse Response}
+\Crefrange{fig:FIR_50Hamming}{fig:FIR_Kaiser} demonstrates three different windows and their effect on the impulse response. Comparing the magnitudes response, the Hamming window has a less sharp cutoff at the cutoff frequencies than both the Chebyshev and the Kaiser filter. The Chebyshev filter has a noticable ripple in the passband, whereas the ripple in the Kaiser filter is almost invisible. The phase in all three windows appears almost constant outside of the passband, but as an effect of the Hamming window not having as sharp a cutoff at the cutoff frequencies, it's linear phase is a lot longer than the linear phases for both the Chebyshev and Kaiser windows.
+	
+\subsection{FIR Filters Effect on the Sound of the Music}
+\begin{table}[!htb]
+	\begin{tabularx}{\textwidth}{X X}
+		Filter & Effect \\
+		\midrule
+		High pass at \SI{512}{\hertz} & Almost inaudible. \\
+		Band pass between \SI{512}{\hertz} and \SI{2048}{\hertz} & Bass and bells stand out a lot. Voice very distorted.\\
+		Stop band between \SI{2048}{\hertz} and \SI{8192}{\hertz} & More sound to the bass. Voise less distorted. Small "clicks" during playback. \\
+		Band pass between \SI{8192}{\hertz} and \SI{16384}{\hertz} & Bass sounds like a guitar. General sound level is very low. Hi-hat really comes forward.\\
+		Low pass at \SI{16384}{\hertz} & Some of the hollow noise from hitting the drums has disappeared.\\
+	\end{tabularx}
+\end{table}
