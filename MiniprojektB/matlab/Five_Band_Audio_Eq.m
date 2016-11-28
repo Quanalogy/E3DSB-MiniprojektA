@@ -9,11 +9,11 @@ showOrgTime = 0;    % Set to 1 to show the original signal in the
 showOrgFreq = 1;    % Set to 1 to show the original signal in the
                     % frequency domain 
 doHP        = 0;    % Create a HP filter and show the result using freqz
-doBP1       = 1;    % Create bandpass 1 (512 Hz - 2048 Hz)
+doBP1       = 0;    % Create bandpass 1 (512 Hz - 2048 Hz)
 doBP2       = 0;    % Create Stop Band (2048 Hz - 8192 Hz)
 doBP3       = 0;    % Create band pass (8192 Hz - 16384 Hz)
 doLP        = 0;    % Create low pass 16384 Hz
-doIIRHP     = 0;    % IIR Highpass(512 Hz)
+doIIRHP     = 1;    % IIR Highpass(512 Hz)
 doIIRBP     = 0;    % IIR bandpass (512 Hz - 2048 Hz)
 doIIRexp    = 0;    % Check IIR coefficient speeds
 doSPEED     = 0;    % Find speeds

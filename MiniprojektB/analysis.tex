@@ -4,7 +4,7 @@
 % Does IIR calculate faster than FIR? Use tic/toc in math code.
 % Does multiplying the IIR coefficients  exponentially increase computation time?
 
-\subsection{Original signal}
+\subsection{Original Signal}
 
 \begin{figure}[!htb]
 	\centering
@@ -13,10 +13,10 @@
 	\label{fig:orgfreq}
 \end{figure}
 
-\subsection{Filtered signals}
+\subsection{Filtered Signals}
 All frequency bands presented in \cref{tab:FiveBand} will be filtered using FIR. Some of them will also be filtered using IIR to test the expectations presented in \cref{sec:expectations}.
 
-\subsubsection{FIR}
+\subsubsection{FIR Frequency Spectrums}
 The five \crefrange{fig:FIR_hipass}{fig:FIR_lowpass} demonstrate different kinds of FIR-filtering, which are all implemented using the matlab fir1 function. \Cref{fig:FIR_hipass} is a highpass filter with a cutoff frequency of \SI{512}{\hertz} and an order of 70. \Cref{fig:FIR_bandpass1} shows a bandpass with cutoff frequencies of \SI{512}{\hertz} and \SI{2048}{\hertz} and an order of 50. \Cref{fig:FIR_stopband} shows a stopband filter with cutoff frquencies of \SI{2048}{\hertz} and \SI{8192}{\hertz} and an order of 50. \Cref{fig:FIR_bandpass2} shows a bandpass filter with cutoff frequencies of \SI{8192}{\hertz} and \SI{16384}{\hertz} and an order of 50. The last filter, \cref{fig:FIR_lowpass} shows a lowpass filter with a cutoff frequency of \SI{16384}{\hertz} and an order of 5.
 
 \begin{figure}[!htb]
@@ -54,5 +54,35 @@ The five \crefrange{fig:FIR_hipass}{fig:FIR_lowpass} demonstrate different kinds
 	\label{fig:FIR_lowpass}
 \end{figure}
 
-\subsubsection{IIR}
+\subsubsection{IIR Frequency Spectrums}
+\Cref{fig:IIR_BP1highpass} and \cref{fig:IIR_BP1bandpass} shows the effect of a few IIR filters on the original frequency spectrum. \cref{fig:IIR_BP1highpass} is a high pass filter at \SI{512}{\hertz} with an order of 1. \Cref{fig:IIR_BP1bandpass} is a bandpass filter at the frequencies \SI{512}{\hertz} and \SI{2048}{\hertz} with an order of 1.
 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth, clip, trim={6cm 5cm 6cm 5cm}]{matlab/OrgIIRHPFreq}sss
+	\caption{Frequency spectrum of the non-filtered signal(red) a highpass IIR filtered signal(blue).}
+	\label{fig:IIR_BP1highpass}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth, clip, trim={6cm 5cm 6cm 5cm}]{matlab/BP1normFreqIIR}
+	\caption{Frequency spectrum of the non-filtered signal(red) a bandpass IIR filtered signal(blue).}
+	\label{fig:IIR_BP1bandpass}
+\end{figure}
+
+\subsubsection{Interesting Frequency Spectrums}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth, clip, trim={3.5cm 9.4cm 4cm 10cm}]{matlab/FreqRespBP1FIR}
+	\caption{Frequency response of the bandpass FIR filter used in \cref{fig:FIR_bandpass1}.}
+	\label{fig:FIR_BP1freqz}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth, clip, trim={3.5cm 9.4cm 4cm 10cm}]{matlab/FreqRespBP1IIR}
+	\caption{Frequency response of the bandpass IIR filter used in \cref{fig:IIR_bandpass}.}
+	\label{fig:IIR_BP1freqz}
+\end{figure}
