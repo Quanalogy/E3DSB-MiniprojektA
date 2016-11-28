@@ -8,6 +8,7 @@
 # Fjernet musikfiler fra Miniprojekt B
 MiniprojektB/matlab/*.mp4
 MiniprojektB/matlab/*.pdf
+!MiniprojektB/main.pdf
 
 # Fjerner .pdf billedfiler fra Miniprojekt B
 MiniprojektB/*.pdf
