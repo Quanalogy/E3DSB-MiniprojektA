@@ -36,3 +36,4 @@ Eksperimenter i opgaven med filterorden og knækfrekvenser. Dokumenter eksperime
 
 First FIR filters for the bands in \cref{tab:FiveBand} are going to be implemented converted into an .mp4 file for listening. It is expected that the implementation of filters will be most easily heard at frequencies from \SIrange{512}{8192}{\hertz}.
 We are going to do a few speed tests. First testing to see how much faster IIR is compared to FIR at comparable output results (not filter order). Then some testing of the impact of filter order on the computation speed of the two filters.
+A speed test alone does not give the tools to test the two types speed up against each other, as IIR filters can achieve approximately the same effect as a FIR filter with a much lower order, therefore the effect of the order of the filter on the magnitude of the output signal will also be investigated.
