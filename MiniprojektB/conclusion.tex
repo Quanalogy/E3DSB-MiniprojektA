@@ -1,3 +1,10 @@
 % !TEX root = main.tex
 
-\section{Conclusion}
+\section{Conclusions}
+An IIR filter is significantly faster at filtering an incoming signal when compared to a similar FIR filter (\cref{tab:speed}). This speed enhancement is affected by the fact that a higher order FIR filter is needed to accomplish the same output result as a low order IIR filter, as IIR filters of equivalent order as a FIR filter is significantly slower to implement (\cref{tab:order_speed}).
+
+The use of different windows on a FIR filter strongly affects the output magnitude (\cref{sec:FIR_windows}), and should be taken into consideration when designing filters.
+
+If the phase is important to keep track of, this is much easier to do when using a FIR filter, as seen in \cref{tab:phase} and on the figures \ref{fig:FIR_linearphase} and \ref{fig:IIR_phase}, because the FIR phase is linear, but the IIR phase is unpredictable.
+
+The influence of the different filters on the output signal(the music) was, as predicted easiest to notice in the frequency range of \SIrange{512}{16384}{\hertz} (\cref{tab:music}).

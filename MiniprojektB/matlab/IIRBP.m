@@ -2,7 +2,7 @@ function [figW, figHz] = IIRBP(freqRange, Fs, y, figOrgFreq)
     N = length(y);
     frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
     BandPass = freqRange/(Fs/2);
-    [b,a] = butter(2,BandPass,'bandpass');
+    [b,a] = butter(5,BandPass,'bandpass');
     figW = figure;
     hold on
     title('Filter characteristics');

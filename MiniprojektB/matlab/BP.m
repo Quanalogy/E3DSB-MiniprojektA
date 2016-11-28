@@ -2,7 +2,7 @@ function [figW, figHz] = BP(freqRange, Fs, y, figOrgFreq)
     N = length(y);
     frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
     BandPass = freqRange/(Fs/2);
-    BPass = fir1(50,BandPass,'bandpass', kaiser(51,0.5));
+    BPass = fir1(5,BandPass,'bandpass');%, kaiser(51,0.5));
     figW = figure;
     hold on
     title('Filter characteristics');

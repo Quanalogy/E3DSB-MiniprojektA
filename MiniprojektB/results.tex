@@ -47,10 +47,45 @@ To test this a band pass from \SIrange{2048}{8192}{\hertz} will be created using
 \end{table}
 
 \subsection{Windows Effect on the FIR Impluse Response}
-\Crefrange{fig:FIR_50Hamming}{fig:FIR_Kaiser} demonstrates three different windows and their effect on the impulse response. Comparing the magnitudes response, the Hamming window has a less sharp cutoff at the cutoff frequencies than both the Chebyshev and the Kaiser filter. The Chebyshev filter has a noticable ripple in the passband, whereas the ripple in the Kaiser filter is almost invisible. The phase in all three windows appears almost constant outside of the passband, but as an effect of the Hamming window not having as sharp a cutoff at the cutoff frequencies, it's linear phase is a lot longer than the linear phases for both the Chebyshev and Kaiser windows.
-	
-\subsection{FIR Filters Effect on the Sound of the Music}
+\Crefrange{fig:FIR_50Hamming}{fig:FIR_50Kaiser} demonstrates three different windows and their effect on the impulse response. Comparing the magnitudes response, the Hamming window has a less sharp cutoff at the cutoff frequencies than both the Chebyshev and the Kaiser filter. The Chebyshev filter has a noticable ripple in the passband, whereas the ripple in the Kaiser filter is almost invisible. The phase in all three windows appears almost constant outside of the passband, but as an effect of the Hamming window not having as sharp a cutoff at the cutoff frequencies, it's linear phase is a lot longer than the linear phases for both the Chebyshev and Kaiser windows.
+
+\subsection{FIR and IIR filter Order Impact on Phase}
+As seen in \cref{tab:phase} the FIR filter has a starting phase of \num{0} and ends at \ang{-90} times the filter order. The IIR filter has a more unstable phase, but the difference between the start and end phase is always $2\times\ang{90}\times$filter order.
+
 \begin{table}[!htb]
+	\caption{FIR and IIR filter order impact on phase.}
+	\label{tab:phase}
+	\begin{tabularx}{\textwidth}{X | X X | X X}
+		& FIR phase & & IIR phase & \\
+		Filter Order & Start & End & Start & End \\
+		\midrule
+		1 & \ang{0} & \ang{-90} & \ang{90} & \ang{-90} \\
+		2 & \ang{0} & \ang{-180} & \ang{180} & \ang{-180} \\
+		3 & \ang{0} & \ang{-270} & \ang{-90} & \ang{-630} \\
+		5 & \ang{0} & \ang{-450} & \ang{90} & \ang{-810} \\
+	\end{tabularx}
+\end{table}
+
+It should also be noted that the phase of the FIR filter phase is linear, as seen in\cref{fig:FIR_linearphase}, as long as the filter order is low enough as not to cause any ripples (as seen in e.g. \cref{fig:FIR_50Kaiser}). On the other hand an IIR filter is not linear, as seen in \cref{fig:IIR_phase}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth,clip, trim={3cm 9cm 4cm 15.3cm}]{matlab/FIR_linear_phase}
+	\caption{Linearity of a 5th order FIR filter.}
+	\label{fig:FIR_linearphase}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth,clip, trim={3cm 9cm 4cm 15.3cm}]{matlab/IIR_phase}
+	\caption{Non-linearity of a 5th order IIR filter.}
+	\label{fig:IIR_phase}
+\end{figure}
+	
+\subsection{FIR Filter Effect on the Sound of the Music}
+\begin{table}[!htb]
+	\caption{FIR filter effect on the sound of the music}
+	\label{tab:music}
 	\begin{tabularx}{\textwidth}{X X}
 		Filter & Effect \\
 		\midrule
