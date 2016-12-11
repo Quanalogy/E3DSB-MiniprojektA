@@ -8,12 +8,13 @@ function [figfreq, figHz] = HP(cutFreq, Fs, y, figOrgFreq, figfreqz)
     title('Filter characteristics');
     hold on
     freqz(HiPass,1);
+    %zplane(HiPass)
 
-    % Gem og visualiser frekvensændringen
+    % Gem og visualiser frekvensï¿½ndringen
     tic
     yHP = filter(HiPass,1,y);
     toc
-    name = ['HP_', num2str(cutFreq), '_Hz.mp4'];
+    name = ['HP_', num2str(cutFreq), '_Hz.flac'];
     audiowrite(name, yHP, Fs);
     YHP = fft(yHP);
     YdBHP = 20*log10(abs(YHP));
