@@ -22,7 +22,7 @@ function [figfreq, figHz] = HP(cutFreq, Fs, y, figOrgFreq, figfreqz)
     % Plot of discrete fourier transform
     figHz = figure(figOrgFreq);
     hold off
-    title(['Original and HP(512 Hz)', ' in frequency domain(FFT)']);
+    title(['Original and HP', ' in frequency domain(FFT)']);
     hold on
     semilogx(frequency_samples(1:N/2), YdBHP(1:N/2), 'b');
     legend({'original', 'highpass'}, 'FontSize', 16);

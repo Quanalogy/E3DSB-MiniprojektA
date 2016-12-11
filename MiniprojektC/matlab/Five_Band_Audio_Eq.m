@@ -4,9 +4,9 @@ close all
 
 reloadfile  = 1;    % Only set to 1 for first run
 printpdf    = 1;    % Set to 1 for outputting .pdf files
-showOrgTime = 0;    % Set to 1 to show the original signal in the
+showOrgTime = 1;    % Set to 1 to show the original signal in the
                     % time domain
-showOrgFreq = 0;    % Set to 1 to show the original signal in the
+showOrgFreq = 1;    % Set to 1 to show the original signal in the
                     % frequency domain 
 doHP        = 1;    % Create a HP filter and show the result using freqz
 doBP1       = 0;    % Create bandpass 1 (512 Hz - 2048 Hz)
@@ -24,7 +24,7 @@ if reloadfile
     [y_Man,Fs_Man] = audioread(man);
     save('man.mat', 'y_Man', 'Fs_Man');
     
-    woman = './hejLasse-kvinde.flac';
+    woman = './hejLasse-kvindeLys.flac';
     [y_Woman,Fs_Woman] = audioread(woman);
     save('woman.mat', 'y_Woman', 'Fs_Woman');
 else
@@ -109,38 +109,52 @@ axesOrgFreq = axes('Parent',figOrgFreq_Man);
 hold on
 set(axesOrgFreq,'XScale','log');
 grid on
-%title([figureTitle_Man, ' input, in frequency domain(FFT)'],'FontSize',16);
-title(['Man and woman input, in frequency domain(FFT)'],'FontSize',16);
+title([figureTitle_Man, ' input, in frequency domain(FFT)'],'FontSize',16);
+%title(['Man and woman input, in frequency domain(FFT)'],'FontSize',16);
 xlabel('Frequency [Hz]','FontSize', 14);
 ylabel('Magnitude [dB]','FontSize', 14);
 xlim([256 Fs_Man/2]);
 semilogx(frequency_samples_Man(1:N_Man/2), YdB_Man(1:N_Man/2), 'r');
 
 % Woman
+
+if showOrgFreq
+    figOrgFreq_Woman = figure;
+else
+    figOrgFreq_Woman = figure('Visible', 'off');
+end
+axesOrgFreq = axes('Parent',figOrgFreq_Woman);
 hold on
-semilogx(frequency_samples_Woman(1:N_Woman/2), YdB_Man(1:N_Woman/2), 'b');
-legend('Man','Woman', 'Location', 'southwest');
+set(axesOrgFreq,'XScale','log');
+grid on
+title([figureTitle_Woman, ' input, in frequency domain(FFT)'],'FontSize',16);
+%title(['Man and woman input, in frequency domain(FFT)'],'FontSize',16);
+xlabel('Frequency [Hz]','FontSize', 14);
+ylabel('Magnitude [dB]','FontSize', 14);
+xlim([256 Fs_Woman/2]);
+semilogx(frequency_samples_Woman(1:N_Woman/2), YdB_Woman(1:N_Woman/2), 'r');
 
 % Gem som pdf
 if printpdf
-    SaveAsPdf('OrgFreq_WoMan', 'landscape', figOrgFreq_Man);
+    SaveAsPdf('OrgFreq_Man', 'landscape', figOrgFreq_Man);
+    SaveAsPdf('OrgFreq_Woman', 'landscape', figOrgFreq_Woman);
 end
 
 %% Create high pass filter and plot with freqz for clarity
 
 if doHP
-    figW_Man = figure;
-    [figW_Man, figOrgFreq_Man] = HP(3500,Fs_Man,y_Man,figOrgFreq_Man, figW_Man);
+    %figW_Man = figure;
+    %[figW_Man, figOrgFreq_Man] = HP(3500,Fs_Man,y_Man,figOrgFreq_Man, figW_Man);
 
-    %figW_Woman = figure;
-    %[figW_Woman, figOrgFreq_Woman] = HP(512,Fs_Woman,y_Woman,figOrgFreq_Woman, figW_Woman);
+    figW_Woman = figure;
+    [figW_Woman, figOrgFreq_Woman] = HP(2800,Fs_Woman,y_Woman,figOrgFreq_Woman, figW_Woman);
 
     % Gem som pdf
     if printpdf
-        SaveAsPdf('OrgHPFreq_Man', 'landscape', figOrgFreq_Man);
-        SaveAsPdf('HPnormFreq_Man', 'portrait', figW_Man);
-        %SaveAsPdf('OrgHPFreq_Woman', 'landscape', figOrgFreq_Woman);
-        %SaveAsPdf('HPnormFreq_Woman', 'portrait', figW_Woman);
+        %SaveAsPdf('OrgHPFreq_Man', 'landscape', figOrgFreq_Man);
+        %SaveAsPdf('HPnormFreq_Man', 'portrait', figW_Man);
+        SaveAsPdf('OrgHPFreq_Woman', 'landscape', figOrgFreq_Woman);
+        SaveAsPdf('HPnormFreq_Woman', 'portrait', figW_Woman);
     end
 end
 
