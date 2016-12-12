@@ -161,15 +161,15 @@ end
 %% Create bandpass filter and plot with freqz for clarity
 
 if doBP1
-    [HPFreqz_Man, figOrgFreq_Man] = BP([3500 8000],Fs_Man,y_Man,figOrgFreq_Man);
-    %[HPFreqz_Woman, figOrgFreq_Woman] = BP([2800 6500],Fs_Woman,y_Woman,figOrgFreq_Woman);
+    %[HPFreqz_Man, figOrgFreq_Man] = BP([3500 8000],Fs_Man,y_Man,figOrgFreq_Man);
+    [HPFreqz_Woman, figOrgFreq_Woman] = BP([2800 6500],Fs_Woman,y_Woman,figOrgFreq_Woman);
 
     % Gem som pdf
     if printpdf
-        SaveAsPdf('OrgBP1Freq_Man', 'landscape', figOrgFreq_Man);
-        SaveAsPdf('BP1normFreq_Man', 'portrait', HPFreqz_Man);
-        %SaveAsPdf('OrgBP1Freq_Woman', 'landscape', figOrgFreq_Woman);
-        %SaveAsPdf('BP1normFreq_Woman', 'portrait', HPFreqz_Woman);
+        %SaveAsPdf('OrgBP1Freq_Man', 'landscape', figOrgFreq_Man);
+        %SaveAsPdf('BP1normFreq_Man', 'portrait', HPFreqz_Man);
+        SaveAsPdf('OrgBP1Freq_Woman', 'landscape', figOrgFreq_Woman);
+        SaveAsPdf('BP1normFreq_Woman', 'portrait', HPFreqz_Woman);
     end
 end
 

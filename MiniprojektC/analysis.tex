@@ -14,13 +14,13 @@ First a formal analysis of the man and the woman's voice saying "Hej Lasse" in t
 	\centering
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\textwidth]{OrgTid_Man.pdf}
-		\caption{The time domain signal of the man.}
+		\caption{The time domain signal of the man. On the x-axis time in seconds, on the y-axis magnitude}
 		\label{fig:time_man}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\textwidth]{OrgTid_Woman.pdf}
-		\caption{The time domain signal of the woman.}
+		\caption{The time domain signal of the woman. On the x-axis time in seconds, on the y-axis magnitude}
 		\label{fig:time_woman}
 	\end{subfigure}
 	\caption{The time samples of a man and a woman saying "Hej Lasse".}
@@ -29,13 +29,12 @@ First a formal analysis of the man and the woman's voice saying "Hej Lasse" in t
 
 \subsubsection{Fourier transform with FFT}
 
-The fourier transform will show the characteristics of the male and female voice. In \cref{fig:WoManFFT} the fourier transform based of the two previous signals seen in \cref{fig:time_WoMan} - in red the male signal and in blue the female signal. It is clear to see that the primary part of the voice of the male is located at lower frequencies than the voice of the woman.
-\fxnote{Hvor peaker kvinden? Hvor peaker manden?}
+The fourier transform will show the characteristics of the male and female voice. In \cref{fig:WoManFFT} the fourier transform based of the two previous signals seen in \cref{fig:time_WoMan} - in red the male signal and in blue the female signal. It is clear to see that the primary part of the voice of the male is located at lower frequencies than the voice of the woman. In the following sections we will use \SI{2800}{\hertz} to \SI{4500}{\hertz} as the range of the male voice, while the female voice is in the range of \SI{3500}{\hertz} to \SI{8000}{\hertz}.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{OrgFreq_WoMan.pdf}
-	\caption{The frequency analysis of the man and woman.}
+	\caption{The frequency analysis of the man and woman. On the x-axis frequency in \si{\hertz}, on the y-axis magnitude in \si{\decibel}}
 	\label{fig:WoManFFT}
 \end{figure}
 
@@ -83,14 +82,14 @@ Notice that the filtered signal is stored as a .flac file, which also will be di
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{HPnormFreq_Man.pdf}
-	\caption{The highpass filtered signal of the male input.}
+	\caption{The highpass filtered signal of the male input. On the x-axis frequency in \si{\hertz}, on the y-axis magnitude in \si{\decibel}}
 	\label{fig:HPMAle}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{HPnormFreq_Woman.pdf}
-	\caption{The highpass filtered signal of the female input.}
+	\caption{The highpass filtered signal of the female input. On the x-axis frequency in \si{\hertz}, on the y-axis magnitude in \si{\decibel}}
 	\label{fig:HPFemale}
 \end{figure}
 
@@ -137,14 +136,14 @@ end
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{BP1normFreq_Man.pdf}
-	\caption{Bandpass from \SI{3500}{\hertz} to \SI{8000}{\hertz} to the male signal.}
+	\caption{Bandpass from \SI{3500}{\hertz} to \SI{8000}{\hertz} to the male signal. On the x-axis frequency in \si{\hertz}, on the y-axis magnitude in \si{\decibel}}
 	\label{fig:maleBP}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{BP1normFreq_Woman.pdf}
-	\caption{Bandpass from \SI{2800}{\hertz} to \SI{6500}{\hertz} to the female signal.}
+	\caption{Bandpass from \SI{2800}{\hertz} to \SI{6500}{\hertz} to the female signal. On the x-axis frequency in \si{\hertz}, on the y-axis magnitude in \si{\decibel}}
 	\label{fig:femaleBP}
 \end{figure}
 
