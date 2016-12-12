@@ -30,6 +30,7 @@ First a formal analysis of the man and the woman's voice saying "Hej Lasse" in t
 \subsubsection{Fourier transform with FFT}
 
 The fourier transform will show the characteristics of the male and female voice. In \cref{fig:WoManFFT} the fourier transform based of the two previous signals seen in \cref{fig:time_WoMan} - in red the male signal and in blue the female signal. It is clear to see that the primary part of the voice of the male is located at lower frequencies than the voice of the woman.
+\fxnote{Hvor peaker kvinden? Hvor peaker manden?}
 
 \begin{figure}[h]
 	\centering
@@ -77,7 +78,7 @@ legend('Location','best');
 end
 \end{minted}
 
-Notice that the filtered signal is stored as a .flac file, which also will be displayed. The filtered signal can be seen in \cref{fig:HPMAle} for the male and female in \cref{fig:HPFemale}. The filtered signals are somewhat disappointing to listen to, because it simply sounds like \fixme{Like what? hvorfor konklusion her?}
+Notice that the filtered signal is stored as a .flac file, which also will be displayed. The filtered signal can be seen in \cref{fig:HPMAle} for the male and female in \cref{fig:HPFemale}. The filtered signals are somewhat disappointing to listen to, because it simply sounds like \fxnote{Like what? hvorfor konklusion her?}
 
 \begin{figure}[h]
 	\centering
@@ -93,9 +94,11 @@ Notice that the filtered signal is stored as a .flac file, which also will be di
 	\label{fig:HPFemale}
 \end{figure}
 
+\clearpage
+
 \subsubsection{Bandpass filter (FIR)}
 \label{sec:Bandpass}
-In the previous section a highpass filter were applied to test which effect it had on the two voices. Now a bandpass filter will be applied with an FIR implementation to the two voices to see which differences there will be. The start of the bandpass filter will again be \SI{2800}{\hertz} for the female signal and \SI{3500}{\hertz} for the male signal, while the cutoffs will be at \SI{8000}{\hertz} for the male signal and \SI{6500}{\hertz} for the female signal. The male filtered signal can be seen in \cref{fig:maleBP} and the female can be seen in \cref{fig:femaleBP}
+In the previous section a highpass filter was applied to test which effect it had on the two voices. Now a bandpass filter will be applied with an FIR implementation to the two voices to see which differences there will be. The start of the bandpass filter will again be \SI{2800}{\hertz} for the female signal and \SI{3500}{\hertz} for the male signal, while the cutoffs will be at \SI{8000}{\hertz} for the male signal and \SI{6500}{\hertz} for the female signal. The male filtered signal can be seen in \cref{fig:maleBP} and the female can be seen in \cref{fig:femaleBP}
 
 The code for the bandpass filter is once again implemented in a function and the implementation is as follows:
 
