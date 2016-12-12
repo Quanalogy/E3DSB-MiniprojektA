@@ -1,7 +1,7 @@
 % !TEX root = main.tex
 
 \section{Analysis}
-
+\label{sec:analysis}
 The following analysis will be presented in two parts, one which will be before filtering with timedomain response of the two signals and then the frequency analysis of these with poles and zeroes. Next an appropriate filter will be applied and the two signals will again be analysed as previously explained.
 
 \subsection{Before filtering}
@@ -10,7 +10,7 @@ The following analysis will be presented in two parts, one which will be before 
 
 Firstly an formal analysis of the man and the womans voice saying "Hej Lasse" in the timedomain. In \cref{fig:time_man} the signal for the man can be seen, with the time in seconds on the x-axis and the magnitude on the y-axis and similarily the womans signal is shown in \cref{fig:time_woman}.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{subfigure}{0.45\textwidth}
 	\includegraphics[width=\textwidth]{OrgTid_Man.pdf}
@@ -31,16 +31,13 @@ Firstly an formal analysis of the man and the womans voice saying "Hej Lasse" in
 
 The fourier transform will show the characteristics of the male and female voice. In \cref{fig:WoManFFT} the fourier transform based of the two privious signals seen in \cref{fig:time_WoMan} - in red the male signal and in blue the female signal.
 
-\begin{figure}[bh]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{OrgFreq_WoMan.pdf}
 \caption{The frequency analysis of the man and woman}
 \label{fig:WoManFFT}
 \end{figure}
 
-\subsubsection{Phaseshift}
-
-%Insert about phaseshift
 
 \subsection{Filtering}
 
@@ -84,32 +81,90 @@ end
 
 Notice that the filtered signal i stored as a .flac file, which also will be displayed. The filtered signal can be seen in \cref{fig:HPMAle} for the male and female in \cref{fig:HPFemale}. The filtered signals are somewhat disapointing to listen to, because it simply sounds like 
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{HPnormFreq_Man.pdf}
 \caption{The highpass filtered signal of the male input}
 \label{fig:HPMAle}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{HPnormFreq_Woman.pdf}
 	\caption{The highpass filtered signal of the female input}
 	\label{fig:HPFemale}
 \end{figure}
 
-% Insert picture of highpass filtering male and female
 
-% Insert code of function
+\subsubsection{Bandpassfilter}
+\label{sec:Bandpass}
+In the previous section a highpass filter were applied to test which effect it had on the two voices. Now a bandpass filter will be applied to the two voices to see which differences there will be. The start of the bandpass filter will again be \SI{2800}{\hertz} for the female signal and \SI{3500}{\hertz} for the male signal, while the cutoffs will be at \SI{8000}{\hertz} for the male signal and \SI{6500}{\hertz} for the female signal. The male filtered signal can be seen in \cref{fig:maleBP} and the female can be seen in \cref{fig:femaleBP}
 
-%\subsubsection{Bandstop filter} --- Is this needed?
+The code for the bandpassfilter is once again implemented in a function and the implementation is as follows:
 
-\subsubsection{Fourier transform with FFT}
-The signal will once again be fourier transformed after the filtering. 
+\begin{minted}{matlab}
+function [figW, figHz] = BP(freqRange, Fs, y, figOrgFreq)
+N = length(y);
+frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
+BandPass = freqRange/(Fs/2)
+BPass = fir1(100,BandPass,'bandpass');%, kaiser(51,0.5));
+figW = figure;
+hold on
+title('Filter characteristics');
+freqz(BPass,1);
 
-% Insert fig
+% Gem og visualiser frekvensændringen
+tic
+yBP = filter(BPass,1,y);
+toc
+name = ['BP_', num2str(freqRange(1)), '_Hz_to_', num2str(freqRange(2)), '_Hz.mp4'];
+%audiowrite(name, yBP, Fs);
+YBP = fft(yBP);
+YdBBP= 20*log10(abs(YBP));
+
+% Plot of discrete fourier transform
+figHz = figure(figOrgFreq);
+hold off
+title({['Original and Bandpass'], [num2str(freqRange(1)), ' Hz to ',...
+	num2str(freqRange(2)), ' Hz in frequency domain(FFT)']});
+hold on
+semilogx(frequency_samples(1:N/2), YdBBP(1:N/2), 'b');
+legend({'original', 'bandpass'}, 'FontSize', 16);
+legend('Location','best');
+end
+\end{minted}
 
 
-\subsubsection{Phaseshift}
 
-%Insert about phaseshift
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{BP1normFreq_Man.pdf}
+\caption{Bandpass from \SI{3500}{\hertz} to \SI{8000}{\hertz} to the male signal}
+\label{fig:maleBP}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{BP1normFreq_Woman.pdf}
+\caption{Bandpass from \SI{2800}{\hertz} to \SI{6500}{\hertz} to the female signal}
+\label{fig:femaleBP}
+\end{figure}
+
+
+\subsubsection{Magnitude and phase effect of filtering}
+
+From the section "\nameref{sec:Bandpass}" the effect of the filter are analyzed with the function freqz from matlab. In \cref{fig:freqzMaleBP} the effects of phase and magnitude are shown, while on \cref{fig:freqzFemaleBP} the female response is shown. 
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{BandpassFreqz_male.pdf}
+\caption{Freqz of the male signal after bandpass}
+\label{fig:freqzMaleBP}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{BandpassFreqz_female.pdf}
+\caption{Freqz of the female signal after bandpass}
+\label{fig:freqzFemaleBP}
+\end{figure}

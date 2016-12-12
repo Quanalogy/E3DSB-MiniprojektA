@@ -8,9 +8,9 @@ function [figW, figHz] = SP(freqRange, Fs, y, figOrgFreq)
     title('Filter characteristics');
     freqz(BStop,1);
 
-    % Gem og visualiser frekvensændringen
+    % Gem og visualiser frekvensï¿½ndringen
     ySP = filter(BStop,1,y);
-    name = ['SB_', num2str(freqRange(1)), '_Hz_to_', num2str(freqRange(2)), '_Hz.mp4'];
+    name = ['SB_', num2str(freqRange(1)), '_Hz_to_', num2str(freqRange(2)), '_Hz.flac'];
     audiowrite(name, ySP, Fs);
     YSP = fft(ySP);
     YdBSP= 20*log10(abs(YSP));

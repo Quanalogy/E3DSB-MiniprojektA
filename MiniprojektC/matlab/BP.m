@@ -1,19 +1,20 @@
 function [figW, figHz] = BP(freqRange, Fs, y, figOrgFreq)
     N = length(y);
     frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
-    BandPass = freqRange/(Fs/2);
-    BPass = fir1(5,BandPass,'bandpass');%, kaiser(51,0.5));
+    BandPass = freqRange/(Fs/2)
+    BPass = fir1(100,BandPass,'bandpass');%, kaiser(51,0.5));
     figW = figure;
     hold on
     title('Filter characteristics');
     freqz(BPass,1);
+    %SaveAsPdf(['FrequencyResponse_', num2str(freqRange(1))], 'landscape', frequencyResponse);
 
-    % Gem og visualiser frekvensændringen
+    % Gem og visualiser frekvensÃ¦ndringen
     tic
     yBP = filter(BPass,1,y);
     toc
-    name = ['BP_', num2str(freqRange(1)), '_Hz_to_', num2str(freqRange(2)), '_Hz.mp4'];
-    %audiowrite(name, yBP, Fs);
+    name = ['BP_', num2str(freqRange(1)), '_Hz_to_', num2str(freqRange(2)), '_Hz.flac'];
+    audiowrite(name, yBP, Fs);
     YBP = fft(yBP);
     YdBBP= 20*log10(abs(YBP));
 

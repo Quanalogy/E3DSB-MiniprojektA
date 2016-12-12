@@ -8,8 +8,8 @@ showOrgTime = 1;    % Set to 1 to show the original signal in the
                     % time domain
 showOrgFreq = 1;    % Set to 1 to show the original signal in the
                     % frequency domain 
-doHP        = 1;    % Create a HP filter and show the result using freqz
-doBP1       = 0;    % Create bandpass 1 (512 Hz - 2048 Hz)
+doHP        = 0;    % Create a HP filter and show the result using freqz
+doBP1       = 1;    % Create bandpass 1 (512 Hz - 2048 Hz)
 doBP2       = 0;    % Create Stop Band (2048 Hz - 8192 Hz)
 doBP3       = 0;    % Create band pass (8192 Hz - 16384 Hz)
 doLP        = 0;    % Create low pass 16384 Hz
@@ -113,7 +113,7 @@ title([figureTitle_Man, ' input, in frequency domain(FFT)'],'FontSize',16);
 %title(['Man and woman input, in frequency domain(FFT)'],'FontSize',16);
 xlabel('Frequency [Hz]','FontSize', 14);
 ylabel('Magnitude [dB]','FontSize', 14);
-xlim([256 Fs_Man/2]);
+xlim([256 20000]);
 semilogx(frequency_samples_Man(1:N_Man/2), YdB_Man(1:N_Man/2), 'r');
 
 % Woman
@@ -131,7 +131,7 @@ title([figureTitle_Woman, ' input, in frequency domain(FFT)'],'FontSize',16);
 %title(['Man and woman input, in frequency domain(FFT)'],'FontSize',16);
 xlabel('Frequency [Hz]','FontSize', 14);
 ylabel('Magnitude [dB]','FontSize', 14);
-xlim([256 Fs_Woman/2]);
+xlim([256 20000]);
 semilogx(frequency_samples_Woman(1:N_Woman/2), YdB_Woman(1:N_Woman/2), 'r');
 
 % Gem som pdf
@@ -161,15 +161,15 @@ end
 %% Create bandpass filter and plot with freqz for clarity
 
 if doBP1
-    [HPFreqz_Man, figOrgFreq_Man] = BP([512 2048],Fs_Man,y_Man,figOrgFreq_Man);
-    [HPFreqz_Woman, figOrgFreq_Woman] = BP([512 2048],Fs_Woman,y_Woman,figOrgFreq_Woman);
+    [HPFreqz_Man, figOrgFreq_Man] = BP([3500 8000],Fs_Man,y_Man,figOrgFreq_Man);
+    %[HPFreqz_Woman, figOrgFreq_Woman] = BP([2800 6500],Fs_Woman,y_Woman,figOrgFreq_Woman);
 
     % Gem som pdf
     if printpdf
         SaveAsPdf('OrgBP1Freq_Man', 'landscape', figOrgFreq_Man);
         SaveAsPdf('BP1normFreq_Man', 'portrait', HPFreqz_Man);
-        SaveAsPdf('OrgBP1Freq_Woman', 'landscape', figOrgFreq_Woman);
-        SaveAsPdf('BP1normFreq_Woman', 'portrait', HPFreqz_Woman);
+        %SaveAsPdf('OrgBP1Freq_Woman', 'landscape', figOrgFreq_Woman);
+        %SaveAsPdf('BP1normFreq_Woman', 'portrait', HPFreqz_Woman);
     end
 end
 
