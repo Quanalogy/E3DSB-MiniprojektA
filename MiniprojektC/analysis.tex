@@ -177,6 +177,7 @@ In \cref{fig:BP-zplane} the pole-zero plot is shown for the FIR bandpass filter.
 \subsubsection{Bandpass filter (IIR)}
 In section "\nameref{sec:Bandpass}" the bandpass filter were made with an FIR filter. In this section we will study the effects of the IIR bandpass filter with the same applied signals and frequencies as seen in section "\nameref{sec:Bandpass}". The filter implementation can be seen in the following code example:
 
+\begin{figure}[H]
 \begin{minted}{matlab}
 function [figW, figHz] = IIRBP(freqRange, Fs, y, figOrgFreq)
 N = length(y);
@@ -210,6 +211,7 @@ legend({'original', 'bandpass'}, 'FontSize', 16);
 legend('Location','best');
 end
 \end{minted}
+\end{figure}
 
 In \cref{fig:IIRBP-male} the male signal applied with the IIR bandpass filter is seen, while in \cref{fig:IIRBP-female} the female is seen. The filtereffects are found with the use of function "freqz" from the matlab library and can be seen in \cref{fig:IIRBPFreqz}. The stability of the filter is evaluated with matlab function zplane, and from \cref{fig:IIRBP-PZ} it is evident that the filter is stable, because all of the poles (x'es) are within the unitcircle. A very noticable difference can be seen between this IIR implementation of the bandpass filters poles and the ones seen in the FIR implementation in \cref{fig:BP-zplane}. 
 
