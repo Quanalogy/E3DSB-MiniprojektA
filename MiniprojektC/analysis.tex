@@ -29,7 +29,7 @@ First a formal analysis of the man and the woman's voice saying "Hej Lasse" in t
 
 \subsubsection{Fourier transform with FFT}
 
-The fourier transform will show the characteristics of the male and female voice. In \cref{fig:WoManFFT} the fourier transform based of the two previous signals seen in \cref{fig:time_WoMan} - in red the male signal and in blue the female signal.
+The fourier transform will show the characteristics of the male and female voice. In \cref{fig:WoManFFT} the fourier transform based of the two previous signals seen in \cref{fig:time_WoMan} - in red the male signal and in blue the female signal. It is clear to see that the primary part of the voice of the male is located at lower frequencies than the voice of the woman.
 
 \begin{figure}[h]
 	\centering
@@ -37,7 +37,6 @@ The fourier transform will show the characteristics of the male and female voice
 	\caption{The frequency analysis of the man and woman.}
 	\label{fig:WoManFFT}
 \end{figure}
-
 
 \subsection{Filtering}
 
@@ -147,18 +146,20 @@ end
 \end{figure}
 
 \subsubsection{Magnitude and phase effect of filtering}
-From the section "\nameref{sec:Bandpass}" the effect of the filter are analyzed with the function freqz from matlab. In \cref{fig:freqzMaleBP} the effects of phase and magnitude are shown, while on \cref{fig:freqzFemaleBP} the female response is shown. 
+From the section "\nameref{sec:Bandpass}" the frequency response of the filters are analyzed with the function freqz from matlab. In \cref{fig:freqzMaleBP} the effects of phase and magnitude are shown, while on \cref{fig:freqzFemaleBP} the female response is shown.
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{BandpassFreqz_male.pdf}
-\caption{freqz of the male signal after bandpass.}
-\label{fig:freqzMaleBP}
+	\centering
+	\includegraphics[width=\textwidth]{BandpassFreqz_male.pdf}
+	\caption{freqz of the male signal after bandpass.}
+	\label{fig:freqzMaleBP}
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{BandpassFreqz_female.pdf}
-\caption{freqz of the female signal after bandpass.}
-\label{fig:freqzFemaleBP}
+	\centering
+	\includegraphics[width=\textwidth]{BandpassFreqz_female.pdf}
+	\caption{freqz of the female signal after bandpass.}
+	\label{fig:freqzFemaleBP}
 \end{figure}
+
+\fxnote{Do they look alike? What does the figures show?}
