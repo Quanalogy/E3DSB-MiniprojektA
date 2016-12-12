@@ -7,6 +7,8 @@ function [figW, figHz] = BP(freqRange, Fs, y, figOrgFreq)
     hold on
     title('Filter characteristics');
     freqz(BPass,1);
+    %zplane(BPass);
+    %grid
     %SaveAsPdf(['FrequencyResponse_', num2str(freqRange(1))], 'landscape', frequencyResponse);
 
     % Gem og visualiser frekvensændringen

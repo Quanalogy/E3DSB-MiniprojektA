@@ -7,8 +7,10 @@ function [figW, figHz] = IIRBP(freqRange, Fs, y, figOrgFreq)
     hold on
     title('Filter characteristics');
     freqz(b,a);
+    figure
+    zplane(b,a);
 
-    % Gem og visualiser frekvensændringen
+    % Gem og visualiser frekvensï¿½ndringen
     tic
     yBP = filter(b,a,y);
     toc

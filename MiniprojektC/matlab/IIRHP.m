@@ -3,16 +3,17 @@ function [figW, figHz] = IIRHP(cutFreq, Fs, y, figOrgFreq)
     frequency_samples = [0:Fs/N:(Fs-(Fs/N))];
     HighPass = cutFreq/(Fs/2);
     [b,a] = butter(1,HighPass,'high');
+    zplane(HighPass)
     figW = figure;
     hold on
     title('Filter characteristics');
     freqz(b,a);
 
-    % Gem og visualiser frekvensændringen
+    % Gem og visualiser frekvensï¿½ndringen
     tic
     yHP = filter(b,a,y);
     toc
-    name = ['IIR_HP_', num2str(cutFreq), '_Hz.mp4'];
+    name = ['IIR_HP_', num2str(cutFreq), '_Hz.flac'];
     audiowrite(name, yHP, Fs);
     YHP = fft(yHP);
     YdBHP = 20*log10(abs(YHP));

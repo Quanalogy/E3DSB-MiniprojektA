@@ -3,10 +3,10 @@
 close all
 
 reloadfile  = 1;    % Only set to 1 for first run
-printpdf    = 1;    % Set to 1 for outputting .pdf files
-showOrgTime = 1;    % Set to 1 to show the original signal in the
+printpdf    = 0;    % Set to 1 for outputting .pdf files
+showOrgTime = 0;    % Set to 1 to show the original signal in the
                     % time domain
-showOrgFreq = 1;    % Set to 1 to show the original signal in the
+showOrgFreq = 0;    % Set to 1 to show the original signal in the
                     % frequency domain 
 doHP        = 0;    % Create a HP filter and show the result using freqz
 doBP1       = 1;    % Create bandpass 1 (512 Hz - 2048 Hz)
@@ -143,18 +143,18 @@ end
 %% Create high pass filter and plot with freqz for clarity
 
 if doHP
-    %figW_Man = figure;
-    %[figW_Man, figOrgFreq_Man] = HP(3500,Fs_Man,y_Man,figOrgFreq_Man, figW_Man);
+    figW_Man = figure;
+    [figW_Man, figOrgFreq_Man] = HP(3500,Fs_Man,y_Man,figOrgFreq_Man, figW_Man);
 
-    figW_Woman = figure;
-    [figW_Woman, figOrgFreq_Woman] = HP(2800,Fs_Woman,y_Woman,figOrgFreq_Woman, figW_Woman);
+    %figW_Woman = figure;
+    %[figW_Woman, figOrgFreq_Woman] = HP(2800,Fs_Woman,y_Woman,figOrgFreq_Woman, figW_Woman);
 
     % Gem som pdf
     if printpdf
-        %SaveAsPdf('OrgHPFreq_Man', 'landscape', figOrgFreq_Man);
-        %SaveAsPdf('HPnormFreq_Man', 'portrait', figW_Man);
-        SaveAsPdf('OrgHPFreq_Woman', 'landscape', figOrgFreq_Woman);
-        SaveAsPdf('HPnormFreq_Woman', 'portrait', figW_Woman);
+        SaveAsPdf('OrgHPFreq_Man', 'landscape', figOrgFreq_Man);
+        SaveAsPdf('HPnormFreq_Man', 'portrait', figW_Man);
+        %SaveAsPdf('OrgHPFreq_Woman', 'landscape', figOrgFreq_Woman);
+        %SaveAsPdf('HPnormFreq_Woman', 'portrait', figW_Woman);
     end
 end
 
@@ -233,15 +233,15 @@ end
 
 %% IIR BP filter
 if doIIRBP
-    [HPFreqz_Man, figOrgFreq_Man] = IIRBP([512 2048],Fs_Man,y_Man,figOrgFreq_Man);
-    [HPFreqz_Woman, figOrgFreq_Woman] = IIRBP([512 2048],Fs_Woman,y_Woman,figOrgFreq_Woman);
+    [HPFreqz_Man, figOrgFreq_Man] = IIRBP([3500 8000],Fs_Man,y_Man,figOrgFreq_Man);
+    [HPFreqz_Woman, figOrgFreq_Woman] = IIRBP([2800 6500],Fs_Woman,y_Woman,figOrgFreq_Woman);
     
     % Gem som pdf
     if printpdf
         SaveAsPdf('OrgIIRBPFreq_Man', 'landscape', figOrgFreq_Man);
         SaveAsPdf('BP1normFreq_Man', 'portrait', HPFreqz_Man);
-        SaveAsPdf('OrgIIRBPFreq_Woman', 'landscape', figOrgFreq_Woman);
-        SaveAsPdf('BP1normFreq_Woman', 'portrait', HPFreqz_Woman);
+        %SaveAsPdf('OrgIIRBPFreq_Woman', 'landscape', figOrgFreq_Woman);
+        %SaveAsPdf('BP1normFreq_Woman', 'portrait', HPFreqz_Woman);
     end
 end
 
