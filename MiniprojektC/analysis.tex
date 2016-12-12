@@ -211,7 +211,7 @@ legend('Location','best');
 end
 \end{minted}
 
-In \cref{fig:IIRBP-male} the male signal applied with the IIR bandpass filter is seen, while in \cref{fig:IIRBP-female} the female is seen. The filtereffects are found with the use of function "freqz" from the matlab library and can be seen in \cref{fig:IIRBPFreqz}. The stability of the filter is evaluated with matlab function zplane, and from \cref{fig:IIRBP-PZ} it is evident that the filter is stable, because all of the poles (x'es) are within the unitcircle. A very noticable difference can be seen between this IIR implementation of the bandpass filters poles and the ones seen in the FIR implementation in \cref{fig:BP-zplane}. 
+In \cref{fig:IIRBP-male} the male signal applied with the IIR bandpass filter is seen, while in \cref{fig:IIRBP-female} the female is seen. The filter effects are found with the use of function \texttt{freqz} from the matlab library and can be seen in \cref{fig:IIRBPFreqz}. The stability of the filter is evaluated with matlab function \texttt{zplane}, and from \cref{fig:IIRBP-PZ} it is evident that the filter is stable, because all of the poles (x'es) are within the unitcircle. A very noticable difference can be seen between this IIR implementation of the bandpass filters poles and the ones seen in the FIR implementation in \cref{fig:BP-zplane}. Differences are also apparent when comparing the phase, on the FIR filter a linear phase is present (see \cref{fig:freqzBPMale} and \cref{fig:freqzBP}) and the IIR phase which most certainly is not linear (see \cref{fig:IIRBPFreqz}).
 
 \begin{figure}[h]
 \centering
